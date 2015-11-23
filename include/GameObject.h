@@ -16,7 +16,7 @@ public:
 
 	void createBuffers(Vertex * pVerts, int numVerts, int *pIndices, int numIndices);
 	void loadShader(const string& vsFilename, const string& fsFilename);
-
+  void loadtexture();
 	void setPosition(const vec3& position)
 	{
 		m_Position = position;

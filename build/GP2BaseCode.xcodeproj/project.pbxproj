@@ -37,6 +37,16 @@
 		082A488D9A4E4865AAE911A3 /* Graphics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31421ED30D0C4CCB8B457A9C /* Graphics.cpp */; settings = {COMPILER_FLAGS = ""; }; };
 		331AC837E3CD4D17B1FBA926 /* FileSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8C51E150B85145AC8FB3171A /* FileSystem.cpp */; settings = {COMPILER_FLAGS = ""; }; };
 		356E89F61C0369E0004BECD8 /* Material.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 356E89F51C0369E0004BECD8 /* Material.cpp */; };
+		35AB5EEE1C03B5D0004FF5BA /* Common.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B34C16EC2624F8BB492CA51 /* Common.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		35AB5EEF1C03B5D0004FF5BA /* FBXLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = 7997012D6052428FB31EFFCB /* FBXLoader.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		35AB5EF01C03B5D0004FF5BA /* FileSystem.h in Headers */ = {isa = PBXBuildFile; fileRef = E82EFA3F91234F05BEAE22E0 /* FileSystem.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		35AB5EF11C03B5D0004FF5BA /* GameObject.h in Headers */ = {isa = PBXBuildFile; fileRef = D2A429F650964902A1B509E8 /* GameObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		35AB5EF21C03B5D0004FF5BA /* Graphics.h in Headers */ = {isa = PBXBuildFile; fileRef = F294586AC27641E683977EF2 /* Graphics.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		35AB5EF31C03B5D0004FF5BA /* Mesh.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C9362DC9B074DAE948D787D /* Mesh.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		35AB5EF41C03B5D0004FF5BA /* Shader.h in Headers */ = {isa = PBXBuildFile; fileRef = E55508B0F9F94BC3AA37452E /* Shader.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		35AB5EF51C03B5D0004FF5BA /* Texture.h in Headers */ = {isa = PBXBuildFile; fileRef = F3F8FCE6208542A8A415291A /* Texture.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		35AB5EF61C03B5D0004FF5BA /* Vertices.h in Headers */ = {isa = PBXBuildFile; fileRef = 49FE47EC1979439DA5CE1927 /* Vertices.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		35AB5EF71C03B5D0004FF5BA /* Material.h in Headers */ = {isa = PBXBuildFile; fileRef = 356E89F81C036A5A004BECD8 /* Material.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		477D5978630443BC9717D314 /* FBXLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 13BD7E20F6344CDB9C27304F /* FBXLoader.cpp */; settings = {COMPILER_FLAGS = ""; }; };
 		9868CC1D64B34863AA4CF529 /* Texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 56E651CB2D5F4DDC88DF6BA2 /* Texture.cpp */; settings = {COMPILER_FLAGS = ""; }; };
 		99034E88457C487AA5DB2D3D /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 127309C2C9F24A7885F66A0D /* main.cpp */; settings = {COMPILER_FLAGS = ""; }; };
@@ -204,6 +214,26 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		35AB5EED1C03B5B7004FF5BA /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				35AB5EEE1C03B5D0004FF5BA /* Common.h in Headers */,
+				35AB5EEF1C03B5D0004FF5BA /* FBXLoader.h in Headers */,
+				35AB5EF01C03B5D0004FF5BA /* FileSystem.h in Headers */,
+				35AB5EF11C03B5D0004FF5BA /* GameObject.h in Headers */,
+				35AB5EF21C03B5D0004FF5BA /* Graphics.h in Headers */,
+				35AB5EF31C03B5D0004FF5BA /* Mesh.h in Headers */,
+				35AB5EF41C03B5D0004FF5BA /* Shader.h in Headers */,
+				35AB5EF51C03B5D0004FF5BA /* Texture.h in Headers */,
+				35AB5EF61C03B5D0004FF5BA /* Vertices.h in Headers */,
+				35AB5EF71C03B5D0004FF5BA /* Material.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
 		1D7F9A5D5868416FBDB586D3 /* GP2BaseCode */ = {
 			isa = PBXNativeTarget;
@@ -211,6 +241,7 @@
 			buildPhases = (
 				1B87313BDEB9499983F89363 /* CMake PreBuild Rules */,
 				330DF8AE75634CB6A2B764E4 /* Sources */,
+				35AB5EED1C03B5B7004FF5BA /* Headers */,
 			);
 			buildRules = (
 			);
