@@ -168,7 +168,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "38"
             endingLineNumber = "38"
-            landmarkName = "setRotation(const vec3&amp; rotation)"
+            landmarkName = "getNumberOfChildren()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -184,7 +184,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "51"
             endingLineNumber = "51"
-            landmarkName = "getShaderProgram()"
+            landmarkName = "getVertexArrayObject()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -200,6 +200,20 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "11"
             endingLineNumber = "11">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/Material.cpp"
+            timestampString = "469985931.853199"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "9"
+            endingLineNumber = "9">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
