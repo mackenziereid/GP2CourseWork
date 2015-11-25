@@ -40,16 +40,16 @@
 		35AB5EEE1C03B5D0004FF5BA /* Common.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B34C16EC2624F8BB492CA51 /* Common.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		35AB5EEF1C03B5D0004FF5BA /* FBXLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = 7997012D6052428FB31EFFCB /* FBXLoader.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		35AB5EF01C03B5D0004FF5BA /* FileSystem.h in Headers */ = {isa = PBXBuildFile; fileRef = E82EFA3F91234F05BEAE22E0 /* FileSystem.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		35AB5EF11C03B5D0004FF5BA /* GameObject.h in Headers */ = {isa = PBXBuildFile; fileRef = D2A429F650964902A1B509E8 /* GameObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		35AB5EF21C03B5D0004FF5BA /* Graphics.h in Headers */ = {isa = PBXBuildFile; fileRef = F294586AC27641E683977EF2 /* Graphics.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		35AB5EF31C03B5D0004FF5BA /* Mesh.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C9362DC9B074DAE948D787D /* Mesh.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		35AB5EF41C03B5D0004FF5BA /* Shader.h in Headers */ = {isa = PBXBuildFile; fileRef = E55508B0F9F94BC3AA37452E /* Shader.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		35AB5EF51C03B5D0004FF5BA /* Texture.h in Headers */ = {isa = PBXBuildFile; fileRef = F3F8FCE6208542A8A415291A /* Texture.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		35AB5EF61C03B5D0004FF5BA /* Vertices.h in Headers */ = {isa = PBXBuildFile; fileRef = 49FE47EC1979439DA5CE1927 /* Vertices.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		35EF48891C0604190056BB79 /* GameObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 35EF48871C0601FC0056BB79 /* GameObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		35EF488A1C0604740056BB79 /* GameObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 68C44341BE4A42DEB1B5379D /* GameObject.cpp */; };
 		477D5978630443BC9717D314 /* FBXLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 13BD7E20F6344CDB9C27304F /* FBXLoader.cpp */; settings = {COMPILER_FLAGS = ""; }; };
 		9868CC1D64B34863AA4CF529 /* Texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 56E651CB2D5F4DDC88DF6BA2 /* Texture.cpp */; settings = {COMPILER_FLAGS = ""; }; };
 		99034E88457C487AA5DB2D3D /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 127309C2C9F24A7885F66A0D /* main.cpp */; settings = {COMPILER_FLAGS = ""; }; };
-		BC253E810BEA4FADBCEF4362 /* GameObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 68C44341BE4A42DEB1B5379D /* GameObject.cpp */; settings = {COMPILER_FLAGS = ""; }; };
 		D7165774BAAC478F98D5CA73 /* Shader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 10F18F9B7FF14D7EAA884C03 /* Shader.cpp */; settings = {COMPILER_FLAGS = ""; }; };
 /* End PBXBuildFile section */
 
@@ -84,6 +84,7 @@
 		31421ED30D0C4CCB8B457A9C /* Graphics.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = Graphics.cpp; path = src/Graphics.cpp; sourceTree = SOURCE_ROOT; };
 		3549A0151C03B8A300EC331B /* Material.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Material.cpp; path = src/Material.cpp; sourceTree = "<group>"; };
 		3549A0161C03B8CC00EC331B /* Material.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Material.h; path = include/Material.h; sourceTree = "<group>"; };
+		35EF48871C0601FC0056BB79 /* GameObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameObject.h; path = include/GameObject.h; sourceTree = SOURCE_ROOT; };
 		3B34C16EC2624F8BB492CA51 /* Common.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = Common.h; path = include/Common.h; sourceTree = SOURCE_ROOT; };
 		49FE47EC1979439DA5CE1927 /* Vertices.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = Vertices.h; path = include/Vertices.h; sourceTree = SOURCE_ROOT; };
 		56E651CB2D5F4DDC88DF6BA2 /* Texture.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = Texture.cpp; path = src/Texture.cpp; sourceTree = SOURCE_ROOT; };
@@ -94,7 +95,6 @@
 		83B900FAB6C844A4A41E8B06 /* CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
 		8C51E150B85145AC8FB3171A /* FileSystem.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = FileSystem.cpp; path = src/FileSystem.cpp; sourceTree = SOURCE_ROOT; };
 		B2C9D6323172440AA883906A /* GP2BaseCode */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = GP2BaseCode; sourceTree = BUILT_PRODUCTS_DIR; };
-		D2A429F650964902A1B509E8 /* GameObject.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = GameObject.h; path = include/GameObject.h; sourceTree = SOURCE_ROOT; };
 		E55508B0F9F94BC3AA37452E /* Shader.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = Shader.h; path = include/Shader.h; sourceTree = SOURCE_ROOT; };
 		E82EFA3F91234F05BEAE22E0 /* FileSystem.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = FileSystem.h; path = include/FileSystem.h; sourceTree = SOURCE_ROOT; };
 		E83F87BA41A94BD8ADCBA25D /* CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
@@ -172,10 +172,10 @@
 		A9E59BF9E15041B8A67CE08B /* Header Files */ = {
 			isa = PBXGroup;
 			children = (
+				35EF48871C0601FC0056BB79 /* GameObject.h */,
 				3B34C16EC2624F8BB492CA51 /* Common.h */,
 				7997012D6052428FB31EFFCB /* FBXLoader.h */,
 				E82EFA3F91234F05BEAE22E0 /* FileSystem.h */,
-				D2A429F650964902A1B509E8 /* GameObject.h */,
 				F294586AC27641E683977EF2 /* Graphics.h */,
 				7C9362DC9B074DAE948D787D /* Mesh.h */,
 				E55508B0F9F94BC3AA37452E /* Shader.h */,
@@ -221,10 +221,10 @@
 				35AB5EEE1C03B5D0004FF5BA /* Common.h in Headers */,
 				35AB5EEF1C03B5D0004FF5BA /* FBXLoader.h in Headers */,
 				35AB5EF01C03B5D0004FF5BA /* FileSystem.h in Headers */,
-				35AB5EF11C03B5D0004FF5BA /* GameObject.h in Headers */,
 				35AB5EF21C03B5D0004FF5BA /* Graphics.h in Headers */,
 				35AB5EF31C03B5D0004FF5BA /* Mesh.h in Headers */,
 				35AB5EF41C03B5D0004FF5BA /* Shader.h in Headers */,
+				35EF48891C0604190056BB79 /* GameObject.h in Headers */,
 				35AB5EF51C03B5D0004FF5BA /* Texture.h in Headers */,
 				35AB5EF61C03B5D0004FF5BA /* Vertices.h in Headers */,
 				3549A0171C03B8CC00EC331B /* Material.h in Headers */,
@@ -321,11 +321,11 @@
 			files = (
 				477D5978630443BC9717D314 /* FBXLoader.cpp in Sources */,
 				331AC837E3CD4D17B1FBA926 /* FileSystem.cpp in Sources */,
-				BC253E810BEA4FADBCEF4362 /* GameObject.cpp in Sources */,
 				082A488D9A4E4865AAE911A3 /* Graphics.cpp in Sources */,
 				D7165774BAAC478F98D5CA73 /* Shader.cpp in Sources */,
 				9868CC1D64B34863AA4CF529 /* Texture.cpp in Sources */,
 				99034E88457C487AA5DB2D3D /* main.cpp in Sources */,
+				35EF488A1C0604740056BB79 /* GameObject.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -354,6 +354,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ONLY_ACTIVE_ARCH = YES;
+				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk;
 				SYMROOT = /Users/jamesglasgow/Documents/GP2BaseCode/build/build;
 			};
@@ -736,6 +737,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ONLY_ACTIVE_ARCH = YES;
+				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk;
 				SYMROOT = /Users/jamesglasgow/Documents/GP2BaseCode/build/build;
 			};
@@ -809,6 +811,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ONLY_ACTIVE_ARCH = YES;
+				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk;
 				SYMROOT = /Users/jamesglasgow/Documents/GP2BaseCode/build/build;
 			};
@@ -818,6 +821,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ONLY_ACTIVE_ARCH = YES;
+				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk;
 				SYMROOT = /Users/jamesglasgow/Documents/GP2BaseCode/build/build;
 			};
