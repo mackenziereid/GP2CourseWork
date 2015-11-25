@@ -15,6 +15,7 @@ mat4 projMatrix;
 mat4 MVPMatrix;
 
 vector<shared_ptr<GameObject> > gameObjects;
+shared_ptr<GameObject> mercury;
 GLuint currentShaderProgam = 0;
 
 vec4 ambientLightColour=vec4(1.0f,1.0f,1.0f,1.0f);
@@ -123,12 +124,17 @@ void initScene()
 	currentTicks=SDL_GetTicks();
 	totalTime=0.0f;
 	createFramebuffer();
+  shared_ptr<Material> planets=shared_ptr<Material>(new Material);
+  string mercuryDiffuse=ASSET_PATH+TEXTURE_PATH+"/mercurymap.jpg";
 	string modelPath = ASSET_PATH + MODEL_PATH + "/sphere-highpoly.fbx";
 	auto currentGameObject = loadFBXFromFile(modelPath);
-
+  planets->loadDiffuseMap(mercuryDiffuse);
+  mercury=shared_ptr<GameObject>(new GameObject);
+  mercury->setMaterial(planets);
 	string vsPath = ASSET_PATH + SHADER_PATH + "/specularVS.glsl";
 	string fsPath = ASSET_PATH + SHADER_PATH + "/specularFS.glsl";
 	currentGameObject->loadShader(vsPath, fsPath);
+ 
 	currentGameObject->setScale(vec3(10.1f, 10.0f, 10.0f));
 
 	gameObjects.push_back(currentGameObject);
@@ -176,13 +182,37 @@ void update()
 void renderGameObject(shared_ptr<GameObject> gameObject)
 {
 	MVPMatrix = projMatrix*viewMatrix*gameObject->getModelMatrix();
+  shared_ptr<Material> mat = gameObject->getMaterial();
 	
-	if (gameObject->getShaderProgram() > 0){
+  
+  if (gameObject->getShaderProgram() > 0){
 		currentShaderProgam = gameObject->getShaderProgram();
 		glUseProgram(currentShaderProgam);
 	}
-
-	GLint MVPLocation = glGetUniformLocation(currentShaderProgam, "MVP");
+ 
+  if (mat != NULL)
+  {
+    cout<<mat<<endl;
+    mat->bind();
+    mat->setUniform("MVP", MVPMatrix);
+    mat->setUniform("ambientLightColour", ambientLightColour);
+    mat->setUniform("ambientMaterialColour", mat->getAmbientMaterial());
+    
+    mat->setUniform("diffuseLightColour", diffuseLightColour);
+    mat->setUniform("diffuseMaterialColour", mat->getDiffuseMaterial());
+    mat->setUniform("lightDirection", lightDirection);
+    
+    mat->setUniform("specularLightColour", specularLightColour);
+    mat->setUniform("specularMaterialColour", mat->getSpecularMaterial());
+    mat->setUniform("specularPower", mat->getSpecularPower());
+    mat->setUniform("cameraPosition", cameraPosition);
+    
+    mat->setUniform("Model", gameObject->getModelMatrix());
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D, mat->getDiffuseMap());
+    mat->setUniform("texture0", 0);
+  }
+	/*GLint MVPLocation = glGetUniformLocation(currentShaderProgam, "MVP");
 
 	GLint ambientLightColourLocation = glGetUniformLocation(currentShaderProgam, "ambientLightColour");
 	GLint ambientMaterialColourLocation = glGetUniformLocation(currentShaderProgam, "ambientMaterialColour");
@@ -213,7 +243,7 @@ void renderGameObject(shared_ptr<GameObject> gameObject)
 	glUniform1f(specularPowerLocation, gameObject->getSpecularPower());
 	glUniform3fv(cameraPositionLocation, 1, value_ptr(cameraPosition));
 
-
+*/
 	glBindVertexArray(gameObject->getVertexArrayObject());
 
 	glDrawElements(GL_TRIANGLES, gameObject->getNumberOfIndices(), GL_UNSIGNED_INT, 0); 
@@ -231,7 +261,7 @@ void renderScene()
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 	//clear the colour and depth buffer
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
+  renderGameObject(mercury);
 	for (auto iter = gameObjects.begin(); iter != gameObjects.end(); iter++)
 	{
 		renderGameObject((*iter));

@@ -79,8 +79,7 @@ void Material::setupUniforms()
   GLint modelLocation = glGetUniformLocation(m_ShaderProgram, "Model");
   
   GLint texture0Location = glGetUniformLocation(m_ShaderProgram, "texture0");
-  
-  
+ 
   m_UniformLocationMap["MVP"] = MVPLocation;
   m_UniformLocationMap["ambientLightColour"] = ambientLightColourLocation;
   m_UniformLocationMap["ambientMaterialColour"] = ambientMaterialColourLocation;
