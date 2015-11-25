@@ -59,8 +59,6 @@ void GameObject::update()
 	}
 }
 
-
-
 void GameObject::addChild(shared_ptr<GameObject> child)
 {
 	child->m_ParentGameObject = this;
