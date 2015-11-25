@@ -6,8 +6,8 @@
 //
 //
 
-#ifndef MATERIAL_H
-#define MATERIAL_H
+#ifndef Material_h
+#define Material_h
 
 
 #endif /* Material_h */

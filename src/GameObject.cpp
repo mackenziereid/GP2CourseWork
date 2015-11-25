@@ -26,6 +26,7 @@ GameObject::GameObject()
 	m_ParentGameObject = NULL;
 }
 
+
 GameObject::~GameObject()
 {
 	glDeleteBuffers(1, &m_VBO);
@@ -57,6 +58,8 @@ void GameObject::update()
 		(*iter)->update();
 	}
 }
+
+
 
 void GameObject::addChild(shared_ptr<GameObject> child)
 {

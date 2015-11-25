@@ -36,7 +36,7 @@
 /* Begin PBXBuildFile section */
 		082A488D9A4E4865AAE911A3 /* Graphics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31421ED30D0C4CCB8B457A9C /* Graphics.cpp */; settings = {COMPILER_FLAGS = ""; }; };
 		331AC837E3CD4D17B1FBA926 /* FileSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8C51E150B85145AC8FB3171A /* FileSystem.cpp */; settings = {COMPILER_FLAGS = ""; }; };
-		356E89F61C0369E0004BECD8 /* Material.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 356E89F51C0369E0004BECD8 /* Material.cpp */; };
+		3549A0171C03B8CC00EC331B /* Material.h in Headers */ = {isa = PBXBuildFile; fileRef = 3549A0161C03B8CC00EC331B /* Material.h */; };
 		35AB5EEE1C03B5D0004FF5BA /* Common.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B34C16EC2624F8BB492CA51 /* Common.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		35AB5EEF1C03B5D0004FF5BA /* FBXLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = 7997012D6052428FB31EFFCB /* FBXLoader.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		35AB5EF01C03B5D0004FF5BA /* FileSystem.h in Headers */ = {isa = PBXBuildFile; fileRef = E82EFA3F91234F05BEAE22E0 /* FileSystem.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -46,7 +46,6 @@
 		35AB5EF41C03B5D0004FF5BA /* Shader.h in Headers */ = {isa = PBXBuildFile; fileRef = E55508B0F9F94BC3AA37452E /* Shader.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		35AB5EF51C03B5D0004FF5BA /* Texture.h in Headers */ = {isa = PBXBuildFile; fileRef = F3F8FCE6208542A8A415291A /* Texture.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		35AB5EF61C03B5D0004FF5BA /* Vertices.h in Headers */ = {isa = PBXBuildFile; fileRef = 49FE47EC1979439DA5CE1927 /* Vertices.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		35AB5EF71C03B5D0004FF5BA /* Material.h in Headers */ = {isa = PBXBuildFile; fileRef = 356E89F81C036A5A004BECD8 /* Material.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		477D5978630443BC9717D314 /* FBXLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 13BD7E20F6344CDB9C27304F /* FBXLoader.cpp */; settings = {COMPILER_FLAGS = ""; }; };
 		9868CC1D64B34863AA4CF529 /* Texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 56E651CB2D5F4DDC88DF6BA2 /* Texture.cpp */; settings = {COMPILER_FLAGS = ""; }; };
 		99034E88457C487AA5DB2D3D /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 127309C2C9F24A7885F66A0D /* main.cpp */; settings = {COMPILER_FLAGS = ""; }; };
@@ -83,8 +82,8 @@
 		127309C2C9F24A7885F66A0D /* main.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = main.cpp; path = src/main.cpp; sourceTree = SOURCE_ROOT; };
 		13BD7E20F6344CDB9C27304F /* FBXLoader.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = FBXLoader.cpp; path = src/FBXLoader.cpp; sourceTree = SOURCE_ROOT; };
 		31421ED30D0C4CCB8B457A9C /* Graphics.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = Graphics.cpp; path = src/Graphics.cpp; sourceTree = SOURCE_ROOT; };
-		356E89F51C0369E0004BECD8 /* Material.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Material.cpp; path = src/Material.cpp; sourceTree = "<group>"; };
-		356E89F81C036A5A004BECD8 /* Material.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Material.h; path = include/Material.h; sourceTree = "<group>"; };
+		3549A0151C03B8A300EC331B /* Material.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Material.cpp; path = src/Material.cpp; sourceTree = "<group>"; };
+		3549A0161C03B8CC00EC331B /* Material.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Material.h; path = include/Material.h; sourceTree = "<group>"; };
 		3B34C16EC2624F8BB492CA51 /* Common.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = Common.h; path = include/Common.h; sourceTree = SOURCE_ROOT; };
 		49FE47EC1979439DA5CE1927 /* Vertices.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = Vertices.h; path = include/Vertices.h; sourceTree = SOURCE_ROOT; };
 		56E651CB2D5F4DDC88DF6BA2 /* Texture.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = Texture.cpp; path = src/Texture.cpp; sourceTree = SOURCE_ROOT; };
@@ -182,7 +181,7 @@
 				E55508B0F9F94BC3AA37452E /* Shader.h */,
 				F3F8FCE6208542A8A415291A /* Texture.h */,
 				49FE47EC1979439DA5CE1927 /* Vertices.h */,
-				356E89F81C036A5A004BECD8 /* Material.h */,
+				3549A0161C03B8CC00EC331B /* Material.h */,
 			);
 			name = "Header Files";
 			sourceTree = "<group>";
@@ -200,6 +199,7 @@
 		F24712BCCD1F4663B8A82755 /* Source Files */ = {
 			isa = PBXGroup;
 			children = (
+				3549A0151C03B8A300EC331B /* Material.cpp */,
 				13BD7E20F6344CDB9C27304F /* FBXLoader.cpp */,
 				8C51E150B85145AC8FB3171A /* FileSystem.cpp */,
 				68C44341BE4A42DEB1B5379D /* GameObject.cpp */,
@@ -207,7 +207,6 @@
 				10F18F9B7FF14D7EAA884C03 /* Shader.cpp */,
 				56E651CB2D5F4DDC88DF6BA2 /* Texture.cpp */,
 				127309C2C9F24A7885F66A0D /* main.cpp */,
-				356E89F51C0369E0004BECD8 /* Material.cpp */,
 			);
 			name = "Source Files";
 			sourceTree = "<group>";
@@ -228,7 +227,7 @@
 				35AB5EF41C03B5D0004FF5BA /* Shader.h in Headers */,
 				35AB5EF51C03B5D0004FF5BA /* Texture.h in Headers */,
 				35AB5EF61C03B5D0004FF5BA /* Vertices.h in Headers */,
-				35AB5EF71C03B5D0004FF5BA /* Material.h in Headers */,
+				3549A0171C03B8CC00EC331B /* Material.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -324,7 +323,6 @@
 				331AC837E3CD4D17B1FBA926 /* FileSystem.cpp in Sources */,
 				BC253E810BEA4FADBCEF4362 /* GameObject.cpp in Sources */,
 				082A488D9A4E4865AAE911A3 /* Graphics.cpp in Sources */,
-				356E89F61C0369E0004BECD8 /* Material.cpp in Sources */,
 				D7165774BAAC478F98D5CA73 /* Shader.cpp in Sources */,
 				9868CC1D64B34863AA4CF529 /* Texture.cpp in Sources */,
 				99034E88457C487AA5DB2D3D /* main.cpp in Sources */,
