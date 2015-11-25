@@ -27,8 +27,7 @@ public:
   
   void loadDiffuseMap(const string& filename);
   void LoadSpecularMap(const string& filename);
-  void loadSkyBoxTextures(const string& filenamePosZ, const string& filenameNegZ, const string& filenamePosX,
-                          const string& filenameNegX, const string& filenamePosY, const string& filenameNegY);
+  
   
   vec4& getAmbientMaterial()
   {
@@ -127,7 +126,7 @@ private:
    GLuint m_SpecularMap;
   GLuint m_EnvironmentMap;
   
-  map<string, GLint> m_UniformLocationMap;
+ map<string, GLint> m_UniformLocationMap;
 };
 
 

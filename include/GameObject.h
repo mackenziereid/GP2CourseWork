@@ -3,6 +3,7 @@
 
 #include "Common.h"
 #include "Vertices.h"
+#include "Material.h"
 
 class GameObject
 {
@@ -91,6 +92,22 @@ public:
 	{
 		return m_NoOfVertices;
 	};
+  
+  void setMaterial(shared_ptr<Material> material)
+  {
+    m_Material=material;
+  };
+  
+  bool operator < (const GameObject& obj) const
+  {
+    return (m_Material < obj.m_Material);
+  };
+  
+  shared_ptr<Material> getMaterial()
+  {
+    return m_Material;
+  };
+  
 private:
 	GLuint m_VBO;
 	GLuint m_EBO;
@@ -110,6 +127,7 @@ private:
 	float m_SpecularPower;
 
 	vector<shared_ptr<GameObject> > m_ChildGameObjects;
+  shared_ptr<Material> m_Material;
 	GameObject * m_ParentGameObject;
 };
 
