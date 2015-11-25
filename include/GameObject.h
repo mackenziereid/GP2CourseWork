@@ -93,7 +93,7 @@ public:
 		return m_NoOfVertices;
 	};
   
-  void setMaterial(shared_ptr<Material> material)
+ /* void setMaterial(shared_ptr<Material> material)
   {
     m_Material=material;
   };
@@ -106,7 +106,7 @@ public:
   shared_ptr<Material> getMaterial()
   {
     return m_Material;
-  };
+  };*/
   
 private:
 	GLuint m_VBO;
