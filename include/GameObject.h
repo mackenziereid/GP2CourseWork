@@ -12,11 +12,14 @@ public:
 	~GameObject();
 
 	void update();
-  void LoadTexture();
+ 
 	void addChild(shared_ptr<GameObject> child);
 
 	void createBuffers(Vertex * pVerts, int numVerts, int *pIndices, int numIndices);
 	void loadShader(const string& vsFilename, const string& fsFilename);
+  void LoadSpecularMap(const string& filename);
+  void loadDiffuseMap(const string& filename);
+
   
 	void setPosition(const vec3& position)
 	{
@@ -107,7 +110,14 @@ public:
   {
     return m_Material;
   };*/
-  
+  GLuint getDiffuseMap()
+  {
+    return m_DiffuseMap;
+  };
+  GLuint getSpecularMap()
+  {
+    return m_SpecularMap;
+  };
 private:
 	GLuint m_VBO;
 	GLuint m_EBO;
@@ -126,8 +136,10 @@ private:
 	vec4 m_SpecularMaterial;
 	float m_SpecularPower;
 
+  GLuint m_DiffuseMap;
+  GLuint m_SpecularMap;
 	vector<shared_ptr<GameObject> > m_ChildGameObjects;
-  shared_ptr<Material> m_Material;
+  //shared_ptr<Material> m_Material;
 	GameObject * m_ParentGameObject;
 };
 
