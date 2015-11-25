@@ -26,6 +26,7 @@ GameObject::GameObject()
 	m_ParentGameObject = NULL;
 }
 
+
 GameObject::~GameObject()
 {
 	glDeleteBuffers(1, &m_VBO);
