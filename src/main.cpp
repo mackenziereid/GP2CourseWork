@@ -260,7 +260,7 @@ void update()
 
 	projMatrix = perspective(45.0f, 640.0f / 480.0f, 0.1f, 100.0f);
 
-	viewMatrix = lookAt(cameraPosition, vec3(0.0f, 0.0f, 0.0f), vec3(0.0f, 1.0f, 0.0f));
+	viewMatrix = lookAt(cameraPosition, vec3(0.0f, 0.0f, 1.0f), vec3(0.0f, 1.0f, 0.0f));
 
 	for (auto iter = gameObjects.begin(); iter != gameObjects.end(); iter++)
 	{
@@ -441,13 +441,23 @@ int main(int argc, char * arg[])
 				switch (event.key.keysym.sym)
 				{
 				case SDLK_LEFT:
+            cameraPosition.x++;
 					break;
 				case SDLK_RIGHT:
+            cameraPosition.x--;
 					break;
 				case SDLK_UP:
+            cameraPosition.y--;
 					break;
 				case SDLK_DOWN:
+            cameraPosition.y++;
 					break;
+          case SDLK_m:
+            cameraPosition.z--;
+            break;
+          case SDLK_n:
+            cameraPosition.z++;
+            break;
 				default:
 					break;
 				}
