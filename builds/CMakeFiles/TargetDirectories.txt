@@ -1,0 +1,3 @@
+/Users/MHReid/Documents/GP2-Labs/GP2CourseWork/builds/CMakeFiles/ALL_BUILD.dir
+/Users/MHReid/Documents/GP2-Labs/GP2CourseWork/builds/CMakeFiles/GP2BaseCode.dir
+/Users/MHReid/Documents/GP2-Labs/GP2CourseWork/builds/CMakeFiles/ZERO_CHECK.dir

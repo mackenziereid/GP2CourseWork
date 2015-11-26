@@ -123,6 +123,7 @@ void initScene()
 	currentTicks=SDL_GetTicks();
 	totalTime=0.0f;
 	createFramebuffer();
+    
 	string modelPath = ASSET_PATH + MODEL_PATH + "/sphere-highpoly.fbx";
 	auto currentGameObject = loadFBXFromFile(modelPath);
 
@@ -130,12 +131,13 @@ void initScene()
 	string fsPath = ASSET_PATH + SHADER_PATH + "/specularFS.glsl";
 	currentGameObject->loadShader(vsPath, fsPath);
 	currentGameObject->setScale(vec3(10.1f, 10.0f, 10.0f));
-
-	gameObjects.push_back(currentGameObject);
+    currentGameObject->setPosition(vec3(1.0f, 1.0f, 1.0f));
+    gameObjects.push_back(currentGameObject);
 
 	modelPath = ASSET_PATH + MODEL_PATH + "/armoredrecon.fbx";
 	currentGameObject = loadFBXFromFile(modelPath);
 	currentGameObject->loadShader(vsPath, fsPath);
+    currentGameObject->setPosition(vec3(-1.0f, -1.0f, -1.0f));
 	gameObjects.push_back(currentGameObject);
 
 }
