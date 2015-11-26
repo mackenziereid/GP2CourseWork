@@ -75,6 +75,8 @@
 		1704190E534E4A14AD4D2893 /* FBXLoader.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = FBXLoader.h; path = include/FBXLoader.h; sourceTree = SOURCE_ROOT; };
 		1DBF097114A442A2B6093636 /* GameObject.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = GameObject.cpp; path = src/GameObject.cpp; sourceTree = SOURCE_ROOT; };
 		26AA92E2F95C4DB0954032AF /* Mesh.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = Mesh.h; path = include/Mesh.h; sourceTree = SOURCE_ROOT; };
+		35B526C21C070C4D0054D075 /* textureFS.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = textureFS.glsl; path = assets/shaders/textureFS.glsl; sourceTree = "<group>"; };
+		35B526C31C070C4D0054D075 /* textureVS.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = textureVS.glsl; path = assets/shaders/textureVS.glsl; sourceTree = "<group>"; };
 		36202D8EB9E3436C9F4A8DC0 /* Shader.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = Shader.h; path = include/Shader.h; sourceTree = SOURCE_ROOT; };
 		40635A04B7894C4EAE11AFF0 /* CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
 		6233718F52F0414488179F88 /* FBXLoader.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = FBXLoader.cpp; path = src/FBXLoader.cpp; sourceTree = SOURCE_ROOT; };
@@ -188,6 +190,8 @@
 		E6F93BDBCDA04AC48B7495CB /* GP2CourseWork */ = {
 			isa = PBXGroup;
 			children = (
+				35B526C21C070C4D0054D075 /* textureFS.glsl */,
+				35B526C31C070C4D0054D075 /* textureVS.glsl */,
 				1E2C0E0A29E745FE822C4313 /* Source Files */,
 				3449F055DFD14B5E9568281B /* Header Files */,
 				40635A04B7894C4EAE11AFF0 /* CMakeLists.txt */,

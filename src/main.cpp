@@ -136,14 +136,14 @@ void initScene()
   gameObjects.push_back(currentGameObject);
   currentGameObject->setPosition(vec3(0.0f, -10.0f, 0.0f));
   
-  modelPath = ASSET_PATH + MODEL_PATH + "/sphere-highpoly.fbx";
+  modelPath = ASSET_PATH + MODEL_PATH + "/sphere-highpoly.fbx";//
   currentGameObject = loadFBXFromFile(modelPath);
   vsPath = ASSET_PATH + SHADER_PATH + "/textureVS.glsl";
   fsPath = ASSET_PATH + SHADER_PATH + "/textureFS.glsl";
   currentGameObject->loadShader(vsPath, fsPath);
   currentGameObject->setScale(vec3(10.0f, 10.0f, 10.0f));
   
-  string texturePath = ASSET_PATH + TEXTURE_PATH + "/texture.png";
+  string texturePath = ASSET_PATH + TEXTURE_PATH + "/mercurymap.png";
   currentGameObject->loadDiffuseMap(texturePath);
   
   gameObjects.push_back(currentGameObject);
