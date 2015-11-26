@@ -26,7 +26,7 @@ vec4 specularLightColour=vec4(1.0f,1.0f,1.0f,1.0f);
 float specularPower=25.0f;
 
 vec3 lightDirection=vec3(0.0f,0.0f,1.0f);
-vec3 cameraPosition=vec3(0.0f,10.0f,50.0f);
+vec3 cameraPosition=vec3(0.0f,10.0f,140.0f);
 
 //for Framebuffer
 GLuint FBOTexture;
@@ -121,33 +121,119 @@ void createFramebuffer()
 	glDeleteShader(fragmentShaderProgram);
 }
 
+string loadInTexture(string texturePath)
+{
+    return ASSET_PATH + TEXTURE_PATH + texturePath;
+}
+
+void sunLoader()
+{
+    string modelPath = ASSET_PATH + MODEL_PATH + "/sphere-highpoly.fbx";
+    auto currentGameObject = loadFBXFromFile(modelPath);
+    string vsPath = ASSET_PATH + SHADER_PATH + "/textureVS.glsl";
+    string fsPath = ASSET_PATH + SHADER_PATH + "/textureFS.glsl";
+    currentGameObject->loadShader(vsPath, fsPath);
+    currentGameObject->setScale(vec3(50.0f, 50.0f, 50.0f));
+    currentGameObject->setPosition(vec3(0.0f, 0.0f, 0.0f));
+    
+    string texturePath = ASSET_PATH + TEXTURE_PATH + "/sunmap.png";
+    currentGameObject->loadDiffuseMap(texturePath);
+    
+    gameObjects.push_back(currentGameObject);
+}
+
+
+void mercuryLoader()
+{
+    string modelPath = ASSET_PATH + MODEL_PATH + "/sphere-highpoly.fbx";
+    auto currentGameObject = loadFBXFromFile(modelPath);
+    string vsPath = ASSET_PATH + SHADER_PATH + "/specularVS.glsl";
+    string fsPath = ASSET_PATH + SHADER_PATH + "/specularFS.glsl";
+    currentGameObject->loadShader(vsPath, fsPath);
+    currentGameObject->setScale(vec3(0.38f, 0.38f, 0.38f));
+    currentGameObject->setPosition(vec3(120.0f, 0.0f, 0.0f));
+    
+    //string texturePath = ASSET_PATH + TEXTURE_PATH + "/mercurymap.png";
+    //currentGameObject->loadDiffuseMap(texturePath);
+    
+    gameObjects.push_back(currentGameObject);
+}
+
+/* void venusLoader()
+{
+    string modelPath = ASSET_PATH + MODEL_PATH + "/sphere-highpoly.fbx";
+    auto currentGameObject = loadFBXFromFile(modelPath);
+    string vsPath = ASSET_PATH + SHADER_PATH + "/specularVS.glsl";
+    string fsPath = ASSET_PATH + SHADER_PATH + "/specularFS.glsl";
+    currentGameObject->loadShader(vsPath, fsPath);
+    currentGameObject->setScale(vec3(0.95f, 0.95f, 0.95f));
+    currentGameObject->setPosition(vec3(0.0f, 0.0f, 0.0f));
+    
+   // string texturePath = ASSET_PATH + TEXTURE_PATH + "/mercurymap.png";
+   // currentGameObject->loadDiffuseMap(texturePath);
+    gameObjects.push_back(currentGameObject);
+}
+
+void earthLoader()
+{
+    string modelPath = ASSET_PATH + MODEL_PATH + "/sphere-highpoly.fbx";
+    auto currentGameObject = loadFBXFromFile(modelPath);
+    string vsPath = ASSET_PATH + SHADER_PATH + "/specularVS.glsl";
+    string fsPath = ASSET_PATH + SHADER_PATH + "/specularFS.glsl";
+    currentGameObject->loadShader(vsPath, fsPath);
+    currentGameObject->setScale(vec3(1.0f, 1.0f, 1.0f));
+    currentGameObject->setPosition(vec3(3.0f, 0.0f, 0.0f));
+    
+    //string texturePath = ASSET_PATH + TEXTURE_PATH + "/mercurymap.png";
+    //currentGameObject->loadDiffuseMap(texturePath);
+    gameObjects.push_back(currentGameObject);
+}
+
+void marsLoader()
+{
+    string modelPath = ASSET_PATH + MODEL_PATH + "/sphere-highpoly.fbx";
+    auto currentGameObject = loadFBXFromFile(modelPath);
+    string vsPath = ASSET_PATH + SHADER_PATH + "/specularVS.glsl";
+    string fsPath = ASSET_PATH + SHADER_PATH + "/specularFS.glsl";
+    currentGameObject->loadShader(vsPath, fsPath);
+    currentGameObject->setScale(vec3(0.53f, 0.53f, 0.53f));
+    currentGameObject->setPosition(vec3(9.0f, 0.0f, 0.0f));
+    
+    //string texturePath = ASSET_PATH + TEXTURE_PATH + "/mercurymap.png";
+    //currentGameObject->loadDiffuseMap(texturePath);
+    
+    gameObjects.push_back(currentGameObject);
+}
+void jupiterLoader()
+{
+    string modelPath = ASSET_PATH + MODEL_PATH + "/sphere-highpoly.fbx";
+    auto currentGameObject = loadFBXFromFile(modelPath);
+    string vsPath = ASSET_PATH + SHADER_PATH + "/specularVS.glsl";
+    string fsPath = ASSET_PATH + SHADER_PATH + "/specularFS.glsl";
+    currentGameObject->loadShader(vsPath, fsPath);
+    currentGameObject->setScale(vec3(10.9f, 10.9f, 10.9f));
+    currentGameObject->setPosition(vec3(16.0f, 0.0f, 0.0f));
+    
+    //string texturePath = ASSET_PATH + TEXTURE_PATH + "/mercurymap.png";
+    //currentGameObject->loadDiffuseMap(texturePath);
+    
+    gameObjects.push_back(currentGameObject);
+}*/
+
 void initScene()
 {
-  currentTicks=SDL_GetTicks();
-  totalTime=0.0f;
-  //createFramebuffer();
-  string modelPath = ASSET_PATH + MODEL_PATH + "/armoredrecon.fbx";
-  auto currentGameObject = loadFBXFromFile(modelPath);
-  
-  string vsPath = ASSET_PATH + SHADER_PATH + "/specularVS.glsl";
-  string fsPath = ASSET_PATH + SHADER_PATH + "/specularFS.glsl";
-  currentGameObject->loadShader(vsPath, fsPath);
-  
-  gameObjects.push_back(currentGameObject);
-  currentGameObject->setPosition(vec3(0.0f, -10.0f, 0.0f));
-  
-  modelPath = ASSET_PATH + MODEL_PATH + "/sphere-highpoly.fbx";//
-  currentGameObject = loadFBXFromFile(modelPath);
-  vsPath = ASSET_PATH + SHADER_PATH + "/textureVS.glsl";
-  fsPath = ASSET_PATH + SHADER_PATH + "/textureFS.glsl";
-  currentGameObject->loadShader(vsPath, fsPath);
-  currentGameObject->setScale(vec3(10.0f, 10.0f, 10.0f));
-  
-  string texturePath = ASSET_PATH + TEXTURE_PATH + "/mercurymap.png";
-  currentGameObject->loadDiffuseMap(texturePath);
-  
-  gameObjects.push_back(currentGameObject);
+    currentTicks=SDL_GetTicks();
+    totalTime=0.0f;
+    //createFramebuffer();
+    
+    sunLoader();
+    mercuryLoader();
+  /*  venusLoader();
+    earthLoader();
+    marsLoader();
+    jupiterLoader(); */
 }
+
 
 void cleanUpFrambuffer()
 {
