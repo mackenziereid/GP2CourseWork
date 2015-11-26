@@ -18,6 +18,8 @@ vector<shared_ptr<GameObject> > gameObjects;
 //shared_ptr<GameObject> mercury;
 GLuint currentShaderProgam = 0;
 
+GLuint currentDiffuseMap = 0;
+
 vec4 ambientLightColour=vec4(1.0f,1.0f,1.0f,1.0f);
 vec4 diffuseLightColour=vec4(1.0f,1.0f,1.0f,1.0f);
 vec4 specularLightColour=vec4(1.0f,1.0f,1.0f,1.0f);
@@ -121,29 +123,30 @@ void createFramebuffer()
 
 void initScene()
 {
-	currentTicks=SDL_GetTicks();
-	totalTime=0.0f;
-	createFramebuffer();
-  //shared_ptr<Material> planets=shared_ptr<Material>(new Material);
-  string mercuryDiffuse=ASSET_PATH+TEXTURE_PATH+"/mercurymap.jpg";
-	string modelPath = ASSET_PATH + MODEL_PATH + "/sphere-highpoly.fbx";
-	auto currentGameObject = loadFBXFromFile(modelPath);
-  //planets->loadDiffuseMap(mercuryDiffuse);
-  //mercury=shared_ptr<GameObject>(new GameObject);
-  //mercury->setMaterial(planets);
-	string vsPath = ASSET_PATH + SHADER_PATH + "/specularVS.glsl";
-	string fsPath = ASSET_PATH + SHADER_PATH + "/specularFS.glsl";
-	currentGameObject->loadShader(vsPath, fsPath);
- 
-	currentGameObject->setScale(vec3(10.1f, 10.0f, 10.0f));
-
-	gameObjects.push_back(currentGameObject);
-
-	modelPath = ASSET_PATH + MODEL_PATH + "/armoredrecon.fbx";
-	currentGameObject = loadFBXFromFile(modelPath);
-	currentGameObject->loadShader(vsPath, fsPath);
-	gameObjects.push_back(currentGameObject);
-
+  currentTicks=SDL_GetTicks();
+  totalTime=0.0f;
+  //createFramebuffer();
+  string modelPath = ASSET_PATH + MODEL_PATH + "/armoredrecon.fbx";
+  auto currentGameObject = loadFBXFromFile(modelPath);
+  
+  string vsPath = ASSET_PATH + SHADER_PATH + "/specularVS.glsl";
+  string fsPath = ASSET_PATH + SHADER_PATH + "/specularFS.glsl";
+  currentGameObject->loadShader(vsPath, fsPath);
+  
+  gameObjects.push_back(currentGameObject);
+  currentGameObject->setPosition(vec3(0.0f, -10.0f, 0.0f));
+  
+  modelPath = ASSET_PATH + MODEL_PATH + "/sphere-highpoly.fbx";//
+  currentGameObject = loadFBXFromFile(modelPath);
+  vsPath = ASSET_PATH + SHADER_PATH + "/textureVS.glsl";
+  fsPath = ASSET_PATH + SHADER_PATH + "/textureFS.glsl";
+  currentGameObject->loadShader(vsPath, fsPath);
+  currentGameObject->setScale(vec3(10.0f, 10.0f, 10.0f));
+  
+  string texturePath = ASSET_PATH + TEXTURE_PATH + "/mercurymap.png";
+  currentGameObject->loadDiffuseMap(texturePath);
+  
+  gameObjects.push_back(currentGameObject);
 }
 
 void cleanUpFrambuffer()
@@ -189,7 +192,14 @@ void renderGameObject(shared_ptr<GameObject> gameObject)
 		currentShaderProgam = gameObject->getShaderProgram();
 		glUseProgram(currentShaderProgam);
 	}
- 
+  GLint texture0Location = glGetUniformLocation(currentShaderProgam, "texture0");
+  
+  if (gameObject->getDiffuseMap() > 0){
+    currentDiffuseMap = gameObject->getDiffuseMap();
+  }
+  glActiveTexture(GL_TEXTURE0);
+  glBindTexture(GL_TEXTURE_2D, currentDiffuseMap);
+  glUniform1i(texture0Location, 0);
  
 	GLint MVPLocation = glGetUniformLocation(currentShaderProgam, "MVP");
 
@@ -277,7 +287,7 @@ void renderPostQuad()
 void render()
 {
 	renderScene();
-	renderPostQuad();
+	//renderPostQuad();
 }
 
 int main(int argc, char * arg[])

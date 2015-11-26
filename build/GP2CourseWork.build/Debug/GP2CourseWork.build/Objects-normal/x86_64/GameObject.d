@@ -340,4 +340,5 @@ dependencies: \
   /opt/local/include/glm/gtc/type_ptr.inl \
   /Users/jamesglasgow/Documents/GP2CourseWork/include/Vertices.h \
   /Users/jamesglasgow/Documents/GP2CourseWork/include/Material.h \
-  /Users/jamesglasgow/Documents/GP2CourseWork/include/Shader.h
+  /Users/jamesglasgow/Documents/GP2CourseWork/include/Shader.h \
+  /Users/jamesglasgow/Documents/GP2CourseWork/include/Texture.h

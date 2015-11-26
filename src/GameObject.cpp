@@ -1,29 +1,31 @@
 #include "GameObject.h"
 #include "Shader.h"
+#include "Texture.h"
 
 GameObject::GameObject()
 {
-	m_VBO=0;
-	m_EBO=0;
-	m_VAO=0;
-	m_NoOfIndices=0;
-	m_NoOfVertices=0;
-
-	m_ShaderProgram=0;
-
-	m_ModelMatrix=mat4(1.0f);
-	m_Position=vec3(0.0f);
-	m_Rotation=vec3(0.0f);
-	m_Scale=vec3(1.0f);
-
-	m_AmbientMaterial = vec4(0.3f,0.3f,0.3f,1.0f);
-	m_DiffuseMaterial=vec4(0.8f,0.8f,0.8f,1.0f);
-	m_SpecularMaterial=vec4(1.0f,1.0f,1.0f,1.0f);
-	m_SpecularPower=25.0f;
-
-	m_ChildGameObjects.clear();
-
-	m_ParentGameObject = NULL;
+  m_VBO=0;
+  m_EBO=0;
+  m_VAO=0;
+  m_NoOfIndices=0;
+  m_NoOfVertices=0;
+  
+  m_ShaderProgram=0;
+  
+  m_ModelMatrix=mat4(1.0f);
+  m_Position=vec3(0.0f);
+  m_Rotation=vec3(0.0f);
+  m_Scale=vec3(1.0f);
+  
+  m_AmbientMaterial = vec4(0.3f,0.3f,0.3f,1.0f);
+  m_DiffuseMaterial=vec4(0.8f,0.8f,0.8f,1.0f);
+  m_SpecularMaterial=vec4(1.0f,1.0f,1.0f,1.0f);
+  m_SpecularPower=25.0f;
+  
+  m_ChildGameObjects.clear();
+  
+  m_ParentGameObject = NULL;
+  m_DiffuseMap = 0;
 }
 
 
@@ -125,5 +127,23 @@ void GameObject::loadShader(const string& vsFilename, const string& fsFilename)
 	//now we can delete the VS & FS Programs
 	glDeleteShader(vertexShaderProgram);
 	glDeleteShader(fragmentShaderProgram);
+}
+void GameObject::loadDiffuseMap(const string& filename)
+{
+  m_DiffuseMap = loadTextureFromFile(filename);
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+  glGenerateMipmap(GL_TEXTURE_2D);
+}
+void GameObject::LoadSpecularMap(const string& filename)
+{
+  m_SpecularMap = loadTextureFromFile(filename);
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+  glGenerateMipmap(GL_TEXTURE_2D);
 }
 
