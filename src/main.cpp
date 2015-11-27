@@ -15,7 +15,7 @@ mat4 projMatrix;
 mat4 MVPMatrix;
 
 vector<shared_ptr<GameObject> > gameObjects;
-//shared_ptr<GameObject> mercury;
+
 GLuint currentShaderProgam = 0;
 
 GLuint currentDiffuseMap = 0;
@@ -183,43 +183,43 @@ void earthLoader()
     currentGameObject->setScale(vec3(0.5f, 0.5f, 0.5f));
     currentGameObject->setPosition(vec3(12.0f, 0.0f, 0.0f));
     
-    string texturePath = ASSET_PATH + TEXTURE_PATH + "/EarthColourMap.png";
+    string texturePath = ASSET_PATH + TEXTURE_PATH + "/earthmap.jpg";
     currentGameObject->loadDiffuseMap(texturePath);
     
     gameObjects.push_back(currentGameObject);
 }
 
-/*
+
 void marsLoader()
 {
-    string modelPath = ASSET_PATH + MODEL_PATH + "/sphere-highpoly.fbx";
+    string modelPath = ASSET_PATH + MODEL_PATH + "/Planet.fbx";
     auto currentGameObject = loadFBXFromFile(modelPath);
-    string vsPath = ASSET_PATH + SHADER_PATH + "/specularVS.glsl";
-    string fsPath = ASSET_PATH + SHADER_PATH + "/specularFS.glsl";
+    string vsPath = ASSET_PATH + SHADER_PATH + "/textureVS.glsl";
+    string fsPath = ASSET_PATH + SHADER_PATH + "/textureFS.glsl";
     currentGameObject->loadShader(vsPath, fsPath);
     currentGameObject->setScale(vec3(0.53f, 0.53f, 0.53f));
     currentGameObject->setPosition(vec3(9.0f, 0.0f, 0.0f));
     
-    //string texturePath = ASSET_PATH + TEXTURE_PATH + "/mercurymap.png";
-    //currentGameObject->loadDiffuseMap(texturePath);
+    string texturePath = ASSET_PATH + TEXTURE_PATH + "/mercurymap.png";
+    currentGameObject->loadDiffuseMap(texturePath);
     
     gameObjects.push_back(currentGameObject);
 }
 void jupiterLoader()
 {
-    string modelPath = ASSET_PATH + MODEL_PATH + "/sphere-highpoly.fbx";
+    string modelPath = ASSET_PATH + MODEL_PATH + "/Planet.fbx";
     auto currentGameObject = loadFBXFromFile(modelPath);
-    string vsPath = ASSET_PATH + SHADER_PATH + "/specularVS.glsl";
-    string fsPath = ASSET_PATH + SHADER_PATH + "/specularFS.glsl";
+    string vsPath = ASSET_PATH + SHADER_PATH + "/textureVS.glsl";
+    string fsPath = ASSET_PATH + SHADER_PATH + "/textureFS.glsl";
     currentGameObject->loadShader(vsPath, fsPath);
-    currentGameObject->setScale(vec3(10.9f, 10.9f, 10.9f));
-    currentGameObject->setPosition(vec3(16.0f, 0.0f, 0.0f));
+    currentGameObject->setScale(vec3(0.53f, 0.53f, 0.53f));
+    currentGameObject->setPosition(vec3(20.0f, 0.0f, 0.0f));
     
-    //string texturePath = ASSET_PATH + TEXTURE_PATH + "/mercurymap.png";
-    //currentGameObject->loadDiffuseMap(texturePath);
+    string texturePath = ASSET_PATH + TEXTURE_PATH + "/mercurymap.png";
+    currentGameObject->loadDiffuseMap(texturePath);
     
     gameObjects.push_back(currentGameObject);
-}*/
+}
 
 void cleanUpFrambuffer()
 {
@@ -247,8 +247,8 @@ void initScene()
     mercuryLoader();
     venusLoader();
     earthLoader();
-   // marsLoader();
-    //jupiterLoader();
+   //marsLoader();
+  //jupiterLoader();
 }
 
 void update()
