@@ -81,6 +81,8 @@
 		352FAF0C1C07CB400064F2FC /* textureTestVS.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = textureTestVS.glsl; path = assets/shaders/textureTestVS.glsl; sourceTree = "<group>"; };
 		352FAF0D1C07CB400064F2FC /* textureVS.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = textureVS.glsl; path = assets/shaders/textureVS.glsl; sourceTree = "<group>"; };
 		357CE6E7910A449084198517 /* Vertices.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = Vertices.h; path = include/Vertices.h; sourceTree = SOURCE_ROOT; };
+		35E14A6E1C08C0D1001A4940 /* specularFS.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = specularFS.glsl; path = assets/shaders/specularFS.glsl; sourceTree = "<group>"; };
+		35E14A6F1C08C0D1001A4940 /* specularVS.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = specularVS.glsl; path = assets/shaders/specularVS.glsl; sourceTree = "<group>"; };
 		3AFEBD604AF4407CA3DFAFC8 /* Common.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = Common.h; path = include/Common.h; sourceTree = SOURCE_ROOT; };
 		4DEB255CB54043DB8982F4DC /* main.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = main.cpp; path = src/main.cpp; sourceTree = SOURCE_ROOT; };
 		5D7F2B12D8F446C09FBB9C36 /* FileSystem.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = FileSystem.h; path = include/FileSystem.h; sourceTree = SOURCE_ROOT; };
@@ -154,6 +156,8 @@
 		779056BB78D44D38B8D350FE /* GP2CourseWork */ = {
 			isa = PBXGroup;
 			children = (
+				35E14A6E1C08C0D1001A4940 /* specularFS.glsl */,
+				35E14A6F1C08C0D1001A4940 /* specularVS.glsl */,
 				352FAF0A1C07CB400064F2FC /* textureFS.glsl */,
 				352FAF0B1C07CB400064F2FC /* textureTestFS.glsl */,
 				352FAF0C1C07CB400064F2FC /* textureTestVS.glsl */,

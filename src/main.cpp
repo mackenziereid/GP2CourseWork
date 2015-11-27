@@ -142,8 +142,8 @@ void mercuryLoader()
 {
     string modelPath = ASSET_PATH + MODEL_PATH + "/Planet.fbx";
     auto currentGameObject = loadFBXFromFile(modelPath);
-    string vsPath = ASSET_PATH + SHADER_PATH + "/textureVS.glsl";
-    string fsPath = ASSET_PATH + SHADER_PATH + "/textureFS.glsl";
+  string vsPath = ASSET_PATH + SHADER_PATH + "/specularVS.glsl";
+  string fsPath = ASSET_PATH + SHADER_PATH + "/specularFS.glsl";
     currentGameObject->loadShader(vsPath, fsPath);
     currentGameObject->setScale(vec3(0.5f, 0.5f, 0.5f));
     currentGameObject->setPosition(vec3(-4.0f, 0.0f, 0.0f));
@@ -159,8 +159,8 @@ void mercuryLoader()
 {
     string modelPath = ASSET_PATH + MODEL_PATH + "/Planet.fbx";
     auto currentGameObject = loadFBXFromFile(modelPath);
-    string vsPath = ASSET_PATH + SHADER_PATH + "/textureVS.glsl";
-    string fsPath = ASSET_PATH + SHADER_PATH + "/textureFS.glsl";
+  string vsPath = ASSET_PATH + SHADER_PATH + "/specularVS.glsl";
+  string fsPath = ASSET_PATH + SHADER_PATH + "/specularFS.glsl";
     currentGameObject->loadShader(vsPath, fsPath);
     currentGameObject->setScale(vec3(0.5f, 0.5f, 0.5f));
     currentGameObject->setPosition(vec3(4.0f, 0.0f, 0.0f));
@@ -177,8 +177,8 @@ void earthLoader()
 {
     string modelPath = ASSET_PATH + MODEL_PATH + "/Planet.fbx";
     auto currentGameObject = loadFBXFromFile(modelPath);
-    string vsPath = ASSET_PATH + SHADER_PATH + "/textureVS.glsl";
-    string fsPath = ASSET_PATH + SHADER_PATH + "/textureFS.glsl";
+    string vsPath = ASSET_PATH + SHADER_PATH + "/specularVS.glsl";
+    string fsPath = ASSET_PATH + SHADER_PATH + "/specularFS.glsl";
     currentGameObject->loadShader(vsPath, fsPath);
     currentGameObject->setScale(vec3(0.5f, 0.5f, 0.5f));
     currentGameObject->setPosition(vec3(12.0f, 0.0f, 0.0f));
@@ -194,8 +194,8 @@ void marsLoader()
 {
     string modelPath = ASSET_PATH + MODEL_PATH + "/Planet.fbx";
     auto currentGameObject = loadFBXFromFile(modelPath);
-    string vsPath = ASSET_PATH + SHADER_PATH + "/textureVS.glsl";
-    string fsPath = ASSET_PATH + SHADER_PATH + "/textureFS.glsl";
+  string vsPath = ASSET_PATH + SHADER_PATH + "/specularVS.glsl";
+  string fsPath = ASSET_PATH + SHADER_PATH + "/specularFS.glsl";
     currentGameObject->loadShader(vsPath, fsPath);
     currentGameObject->setScale(vec3(0.53f, 0.53f, 0.53f));
     currentGameObject->setPosition(vec3(9.0f, 0.0f, 0.0f));
