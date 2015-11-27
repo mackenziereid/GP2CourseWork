@@ -458,6 +458,29 @@ int main(int argc, char * arg[])
           case SDLK_n:
             cameraPosition.z++;
             break;
+          case SDLK_w:
+            lightDirection.x +=-1.0f;
+            
+            break;
+          case SDLK_s:
+           lightDirection.x +=1.0f;
+            
+            break;
+          case SDLK_d:
+            lightDirection.y +=1.0f;
+            break;
+          case SDLK_a:
+            lightDirection.y +=-1.0f;
+            break;
+          case SDLK_e:
+           lightDirection.z +=1.0f;
+            break;
+          case SDLK_q:
+            lightDirection.z +=-1.0f;
+            break;
+          case SDLK_t:
+            cout<<&lightDirection<<endl;
+            break;
 				default:
 					break;
 				}
