@@ -28,6 +28,7 @@ float specularPower=25.0f;
 vec3 lightDirection=vec3(0.0f,0.0f,1.0f);
 vec3 cameraPosition=vec3(0.0f,10.0f,10.0f);
 
+float test=0.0f;
 //for Framebuffer
 GLuint FBOTexture;
 GLuint FBODepthBuffer;
@@ -130,7 +131,7 @@ void sunLoader()
     currentGameObject->loadShader(vsPath, fsPath);
     currentGameObject->setScale(vec3(0.5f, 0.5f, 0.5f));
     currentGameObject->setPosition(vec3(-12.0f, 0.0f, 0.0f));
-    
+    currentGameObject->setRotationSpeed(vec3(0.0f, -1.0f, 0.0f));
     string texturePath = ASSET_PATH + TEXTURE_PATH + "/sunmap.png";
     currentGameObject->loadDiffuseMap(texturePath);
     
@@ -142,16 +143,17 @@ void mercuryLoader()
 {
     string modelPath = ASSET_PATH + MODEL_PATH + "/Planet.fbx";
     auto currentGameObject = loadFBXFromFile(modelPath);
-  string vsPath = ASSET_PATH + SHADER_PATH + "/specularVS.glsl";
-  string fsPath = ASSET_PATH + SHADER_PATH + "/specularFS.glsl";
+    string vsPath = ASSET_PATH + SHADER_PATH + "/specularVS.glsl";
+    string fsPath = ASSET_PATH + SHADER_PATH + "/specularFS.glsl";
     currentGameObject->loadShader(vsPath, fsPath);
     currentGameObject->setScale(vec3(0.5f, 0.5f, 0.5f));
     currentGameObject->setPosition(vec3(-4.0f, 0.0f, 0.0f));
-    
+    currentGameObject->setRotationSpeed(vec3(0.0f, -1.0f, 0.0f));
     string texturePath = ASSET_PATH + TEXTURE_PATH + "/mercurymap.png";
     currentGameObject->loadDiffuseMap(texturePath);
-    
+  
     gameObjects.push_back(currentGameObject);
+
 }
 
 
@@ -159,8 +161,8 @@ void mercuryLoader()
 {
     string modelPath = ASSET_PATH + MODEL_PATH + "/Planet.fbx";
     auto currentGameObject = loadFBXFromFile(modelPath);
-  string vsPath = ASSET_PATH + SHADER_PATH + "/specularVS.glsl";
-  string fsPath = ASSET_PATH + SHADER_PATH + "/specularFS.glsl";
+    string vsPath = ASSET_PATH + SHADER_PATH + "/specularVS.glsl";
+    string fsPath = ASSET_PATH + SHADER_PATH + "/specularFS.glsl";
     currentGameObject->loadShader(vsPath, fsPath);
     currentGameObject->setScale(vec3(0.5f, 0.5f, 0.5f));
     currentGameObject->setPosition(vec3(4.0f, 0.0f, 0.0f));
@@ -183,7 +185,7 @@ void earthLoader()
     currentGameObject->setScale(vec3(0.5f, 0.5f, 0.5f));
     currentGameObject->setPosition(vec3(12.0f, 0.0f, 0.0f));
     
-    string texturePath = ASSET_PATH + TEXTURE_PATH + "/earthmap.jpg";
+    string texturePath = ASSET_PATH + TEXTURE_PATH + "/tc-earth_daymap.jpg";
     currentGameObject->loadDiffuseMap(texturePath);
     
     gameObjects.push_back(currentGameObject);
@@ -442,6 +444,7 @@ int main(int argc, char * arg[])
 				{
 				case SDLK_LEFT:
             cameraPosition.x++;
+            
 					break;
 				case SDLK_RIGHT:
             cameraPosition.x--;
@@ -479,7 +482,7 @@ int main(int argc, char * arg[])
             lightDirection.z +=-1.0f;
             break;
           case SDLK_t:
-            cout<<&lightDirection<<endl;
+            cout<<test<<endl;
             break;
 				default:
 					break;

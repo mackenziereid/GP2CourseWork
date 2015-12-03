@@ -76,6 +76,8 @@
 		1B4596F5181D495693BBCE87 /* Shader.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = Shader.h; path = include/Shader.h; sourceTree = SOURCE_ROOT; };
 		1B8CE5B9B5DF4FA09C53CDF0 /* CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
 		2896B29635C847E3A7D1F0CF /* Texture.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = Texture.cpp; path = src/Texture.cpp; sourceTree = SOURCE_ROOT; };
+		351BC32D1C105CB700992071 /* simplePostProcessAnimFS.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = simplePostProcessAnimFS.glsl; path = assets/shaders/simplePostProcessAnimFS.glsl; sourceTree = "<group>"; };
+		351BC32E1C105CB700992071 /* simplePostProcessFS.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = simplePostProcessFS.glsl; path = assets/shaders/simplePostProcessFS.glsl; sourceTree = "<group>"; };
 		352FAF0A1C07CB400064F2FC /* textureFS.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = textureFS.glsl; path = assets/shaders/textureFS.glsl; sourceTree = "<group>"; };
 		352FAF0B1C07CB400064F2FC /* textureTestFS.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = textureTestFS.glsl; path = assets/shaders/textureTestFS.glsl; sourceTree = "<group>"; };
 		352FAF0C1C07CB400064F2FC /* textureTestVS.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = textureTestVS.glsl; path = assets/shaders/textureTestVS.glsl; sourceTree = "<group>"; };
@@ -156,6 +158,8 @@
 		779056BB78D44D38B8D350FE /* GP2CourseWork */ = {
 			isa = PBXGroup;
 			children = (
+				351BC32D1C105CB700992071 /* simplePostProcessAnimFS.glsl */,
+				351BC32E1C105CB700992071 /* simplePostProcessFS.glsl */,
 				35E14A6E1C08C0D1001A4940 /* specularFS.glsl */,
 				35E14A6F1C08C0D1001A4940 /* specularVS.glsl */,
 				352FAF0A1C07CB400064F2FC /* textureFS.glsl */,
