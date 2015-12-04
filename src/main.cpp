@@ -15,10 +15,11 @@ mat4 projMatrix;
 mat4 MVPMatrix;
 
 vector<shared_ptr<GameObject> > gameObjects;
-//shared_ptr<GameObject> mercury;
+
 GLuint currentShaderProgam = 0;
 
 GLuint currentDiffuseMap = 0;
+GLuint currentSpecMap = 0;
 
 vec4 ambientLightColour=vec4(1.0f,1.0f,1.0f,1.0f);
 vec4 diffuseLightColour=vec4(1.0f,1.0f,1.0f,1.0f);
@@ -28,6 +29,7 @@ float specularPower=25.0f;
 vec3 lightDirection=vec3(0.0f,0.0f,1.0f);
 vec3 cameraPosition=vec3(0.0f,10.0f,10.0f);
 
+float test=0.0f;
 //for Framebuffer
 GLuint FBOTexture;
 GLuint FBODepthBuffer;
@@ -130,7 +132,7 @@ void sunLoader()
     currentGameObject->loadShader(vsPath, fsPath);
     currentGameObject->setScale(vec3(0.5f, 0.5f, 0.5f));
     currentGameObject->setPosition(vec3(-12.0f, 0.0f, 0.0f));
-    
+    currentGameObject->setRotationSpeed(vec3(0.0f, -0.01f, 0.0f));
     string texturePath = ASSET_PATH + TEXTURE_PATH + "/sunmap.png";
     currentGameObject->loadDiffuseMap(texturePath);
     
@@ -142,16 +144,19 @@ void mercuryLoader()
 {
     string modelPath = ASSET_PATH + MODEL_PATH + "/Planet.fbx";
     auto currentGameObject = loadFBXFromFile(modelPath);
-    string vsPath = ASSET_PATH + SHADER_PATH + "/textureVS.glsl";
-    string fsPath = ASSET_PATH + SHADER_PATH + "/textureFS.glsl";
+    string vsPath = ASSET_PATH + SHADER_PATH + "/specularVSTest.glsl";
+    string fsPath = ASSET_PATH + SHADER_PATH + "/specularFSTest.glsl";
     currentGameObject->loadShader(vsPath, fsPath);
     currentGameObject->setScale(vec3(0.5f, 0.5f, 0.5f));
     currentGameObject->setPosition(vec3(-4.0f, 0.0f, 0.0f));
-    
+    currentGameObject->setRotationSpeed(vec3(0.0f, -1.0f, 0.0f));
     string texturePath = ASSET_PATH + TEXTURE_PATH + "/mercurymap.png";
+  //string tecture2Path = ASSET_PATH + TEXTURE_PATH + "/MercuryBumpMap.png";
     currentGameObject->loadDiffuseMap(texturePath);
-    
+ // currentGameObject->LoadSpecularMap(tecture2Path);
+  
     gameObjects.push_back(currentGameObject);
+
 }
 
 
@@ -159,8 +164,8 @@ void mercuryLoader()
 {
     string modelPath = ASSET_PATH + MODEL_PATH + "/Planet.fbx";
     auto currentGameObject = loadFBXFromFile(modelPath);
-    string vsPath = ASSET_PATH + SHADER_PATH + "/textureVS.glsl";
-    string fsPath = ASSET_PATH + SHADER_PATH + "/textureFS.glsl";
+    string vsPath = ASSET_PATH + SHADER_PATH + "/specularVS.glsl";
+    string fsPath = ASSET_PATH + SHADER_PATH + "/specularFS.glsl";
     currentGameObject->loadShader(vsPath, fsPath);
     currentGameObject->setScale(vec3(0.5f, 0.5f, 0.5f));
     currentGameObject->setPosition(vec3(4.0f, 0.0f, 0.0f));
@@ -177,49 +182,51 @@ void earthLoader()
 {
     string modelPath = ASSET_PATH + MODEL_PATH + "/Planet.fbx";
     auto currentGameObject = loadFBXFromFile(modelPath);
-    string vsPath = ASSET_PATH + SHADER_PATH + "/textureVS.glsl";
-    string fsPath = ASSET_PATH + SHADER_PATH + "/textureFS.glsl";
+  string vsPath = ASSET_PATH + SHADER_PATH + "/specularVSTest.glsl";
+  string fsPath = ASSET_PATH + SHADER_PATH + "/specularFSTest.glsl";
     currentGameObject->loadShader(vsPath, fsPath);
     currentGameObject->setScale(vec3(0.5f, 0.5f, 0.5f));
     currentGameObject->setPosition(vec3(12.0f, 0.0f, 0.0f));
-    
+     currentGameObject->setRotationSpeed(vec3(0.0f, -1.0f, 0.0f));
     string texturePath = ASSET_PATH + TEXTURE_PATH + "/EarthColourMap.png";
+   string tecture2Path = ASSET_PATH + TEXTURE_PATH + "/EarthSpecMap.png";
     currentGameObject->loadDiffuseMap(texturePath);
-    
+     currentGameObject->LoadSpecularMap(tecture2Path);
+  
     gameObjects.push_back(currentGameObject);
 }
 
-/*
+
 void marsLoader()
 {
-    string modelPath = ASSET_PATH + MODEL_PATH + "/sphere-highpoly.fbx";
+    string modelPath = ASSET_PATH + MODEL_PATH + "/Planet.fbx";
     auto currentGameObject = loadFBXFromFile(modelPath);
-    string vsPath = ASSET_PATH + SHADER_PATH + "/specularVS.glsl";
-    string fsPath = ASSET_PATH + SHADER_PATH + "/specularFS.glsl";
+  string vsPath = ASSET_PATH + SHADER_PATH + "/specularVS.glsl";
+  string fsPath = ASSET_PATH + SHADER_PATH + "/specularFS.glsl";
     currentGameObject->loadShader(vsPath, fsPath);
     currentGameObject->setScale(vec3(0.53f, 0.53f, 0.53f));
     currentGameObject->setPosition(vec3(9.0f, 0.0f, 0.0f));
     
-    //string texturePath = ASSET_PATH + TEXTURE_PATH + "/mercurymap.png";
-    //currentGameObject->loadDiffuseMap(texturePath);
+    string texturePath = ASSET_PATH + TEXTURE_PATH + "/mercurymap.png";
+    currentGameObject->loadDiffuseMap(texturePath);
     
     gameObjects.push_back(currentGameObject);
 }
 void jupiterLoader()
 {
-    string modelPath = ASSET_PATH + MODEL_PATH + "/sphere-highpoly.fbx";
+    string modelPath = ASSET_PATH + MODEL_PATH + "/Planet.fbx";
     auto currentGameObject = loadFBXFromFile(modelPath);
-    string vsPath = ASSET_PATH + SHADER_PATH + "/specularVS.glsl";
-    string fsPath = ASSET_PATH + SHADER_PATH + "/specularFS.glsl";
+    string vsPath = ASSET_PATH + SHADER_PATH + "/textureVS.glsl";
+    string fsPath = ASSET_PATH + SHADER_PATH + "/textureFS.glsl";
     currentGameObject->loadShader(vsPath, fsPath);
-    currentGameObject->setScale(vec3(10.9f, 10.9f, 10.9f));
-    currentGameObject->setPosition(vec3(16.0f, 0.0f, 0.0f));
+    currentGameObject->setScale(vec3(0.53f, 0.53f, 0.53f));
+    currentGameObject->setPosition(vec3(20.0f, 0.0f, 0.0f));
     
-    //string texturePath = ASSET_PATH + TEXTURE_PATH + "/mercurymap.png";
-    //currentGameObject->loadDiffuseMap(texturePath);
+    string texturePath = ASSET_PATH + TEXTURE_PATH + "/mercurymap.png";
+    currentGameObject->loadDiffuseMap(texturePath);
     
     gameObjects.push_back(currentGameObject);
-}*/
+}
 
 void cleanUpFrambuffer()
 {
@@ -247,8 +254,8 @@ void initScene()
     mercuryLoader();
     venusLoader();
     earthLoader();
-   // marsLoader();
-    //jupiterLoader();
+   //marsLoader();
+  //jupiterLoader();
 }
 
 void update()
@@ -260,7 +267,7 @@ void update()
 
 	projMatrix = perspective(45.0f, 640.0f / 480.0f, 0.1f, 100.0f);
 
-	viewMatrix = lookAt(cameraPosition, vec3(0.0f, 0.0f, 0.0f), vec3(0.0f, 1.0f, 0.0f));
+	viewMatrix = lookAt(cameraPosition, vec3(0.0f, 0.0f, 1.0f), vec3(0.0f, 1.0f, 0.0f));
 
 	for (auto iter = gameObjects.begin(); iter != gameObjects.end(); iter++)
 	{
@@ -279,14 +286,21 @@ void renderGameObject(shared_ptr<GameObject> gameObject)
 		glUseProgram(currentShaderProgam);
 	}
   GLint texture0Location = glGetUniformLocation(currentShaderProgam, "texture0");
-  
+  GLint texture1Location = glGetUniformLocation(currentShaderProgam, "texture1");
   if (gameObject->getDiffuseMap() > 0){
     currentDiffuseMap = gameObject->getDiffuseMap();
   }
   glActiveTexture(GL_TEXTURE0);
   glBindTexture(GL_TEXTURE_2D, currentDiffuseMap);
   glUniform1i(texture0Location, 0);
- 
+  
+  if (gameObject->getSpecularMap() > 0){
+    currentSpecMap = gameObject->getSpecularMap();
+  }
+  glActiveTexture(GL_TEXTURE1);
+  glBindTexture(GL_TEXTURE_2D, currentSpecMap);
+  glUniform1i(texture1Location, 1);
+
 	GLint MVPLocation = glGetUniformLocation(currentShaderProgam, "MVP");
 
 	GLint ambientLightColourLocation = glGetUniformLocation(currentShaderProgam, "ambientLightColour");
@@ -441,13 +455,47 @@ int main(int argc, char * arg[])
 				switch (event.key.keysym.sym)
 				{
 				case SDLK_LEFT:
+            cameraPosition.x++;
+            
 					break;
 				case SDLK_RIGHT:
+            cameraPosition.x--;
 					break;
 				case SDLK_UP:
+            cameraPosition.y--;
 					break;
 				case SDLK_DOWN:
+            cameraPosition.y++;
 					break;
+          case SDLK_m:
+            cameraPosition.z--;
+            break;
+          case SDLK_n:
+            cameraPosition.z++;
+            break;
+          case SDLK_w:
+            lightDirection.x +=-1.0f;
+            
+            break;
+          case SDLK_s:
+           lightDirection.x +=1.0f;
+            
+            break;
+          case SDLK_d:
+            lightDirection.y +=1.0f;
+            break;
+          case SDLK_a:
+            lightDirection.y +=-1.0f;
+            break;
+          case SDLK_e:
+           lightDirection.z +=1.0f;
+            break;
+          case SDLK_q:
+            lightDirection.z +=-1.0f;
+            break;
+          case SDLK_t:
+            cout<<test<<endl;
+            break;
 				default:
 					break;
 				}

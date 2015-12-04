@@ -15,17 +15,21 @@ GameObject::GameObject()
   m_ModelMatrix=mat4(1.0f);
   m_Position=vec3(0.0f);
   m_Rotation=vec3(0.0f);
+  m_RotationSpeed=vec3(0.0f);
   m_Scale=vec3(1.0f);
   
   m_AmbientMaterial = vec4(0.3f,0.3f,0.3f,1.0f);
   m_DiffuseMaterial=vec4(0.8f,0.8f,0.8f,1.0f);
   m_SpecularMaterial=vec4(1.0f,1.0f,1.0f,1.0f);
-  m_SpecularPower=25.0f;
+  m_SpecularPower=1000.0f;
   
   m_ChildGameObjects.clear();
   
   m_ParentGameObject = NULL;
   m_DiffuseMap = 0;
+  
+  currentTicks=SDL_GetTicks();
+  totalTime=0.0f;
 }
 
 
@@ -40,6 +44,11 @@ GameObject::~GameObject()
 
 void GameObject::update()
 {
+  lastTicks=currentTicks;
+  currentTicks=SDL_GetTicks();
+  elapsedTime = (currentTicks - lastTicks) / 1000.0f;
+  totalTime+=elapsedTime;
+  
 	mat4 parentModel(1.0f);
 	if (m_ParentGameObject)
 	{
@@ -48,11 +57,12 @@ void GameObject::update()
 	mat4 translationMatrix = translate(mat4(1.0f), m_Position);
 	mat4 scaleMatrix = scale(mat4(1.0f), m_Scale);
 
-	mat4 rotationMatrix = rotate(mat4(1.0f), m_Rotation.x, vec3(1.0f, 0.0f, 0.0f))*
-		rotate(mat4(1.0f), m_Rotation.y, vec3(0.0f, 1.0f, 0.0f))*
-		rotate(mat4(1.0f), m_Rotation.z, vec3(0.0f, 0.0f, 1.0f));
-
-	m_ModelMatrix = scaleMatrix*rotationMatrix*translationMatrix;
+	mat4 rotationMatrix = rotate(mat4(1.0f), (m_Rotation.x+totalTime)*m_RotationSpeed.x, vec3(1.0f, 0.0f, 0.0f))*
+		rotate(mat4(1.0f), (m_Rotation.y+totalTime)*m_RotationSpeed.y, vec3(0.0f, 1.0f, 0.0f))*
+		rotate(mat4(1.0f), (m_Rotation.z+totalTime)*m_RotationSpeed.z, vec3(0.0f, 0.0f, 1.0f));
+ 
+  //rotate around center of objet //add *-translationMatrix at end to rotate around 0,0,0
+	m_ModelMatrix = scaleMatrix*translationMatrix*rotationMatrix;
 	m_ModelMatrix *= parentModel;
 
 	for (auto iter = m_ChildGameObjects.begin(); iter != m_ChildGameObjects.end(); iter++)
