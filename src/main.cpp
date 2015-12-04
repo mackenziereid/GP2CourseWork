@@ -19,6 +19,7 @@ vector<shared_ptr<GameObject> > gameObjects;
 GLuint currentShaderProgam = 0;
 
 GLuint currentDiffuseMap = 0;
+GLuint currentSpecMap = 0;
 
 vec4 ambientLightColour=vec4(1.0f,1.0f,1.0f,1.0f);
 vec4 diffuseLightColour=vec4(1.0f,1.0f,1.0f,1.0f);
@@ -131,7 +132,7 @@ void sunLoader()
     currentGameObject->loadShader(vsPath, fsPath);
     currentGameObject->setScale(vec3(0.5f, 0.5f, 0.5f));
     currentGameObject->setPosition(vec3(-12.0f, 0.0f, 0.0f));
-    currentGameObject->setRotationSpeed(vec3(0.0f, -1.0f, 0.0f));
+    currentGameObject->setRotationSpeed(vec3(0.0f, -0.01f, 0.0f));
     string texturePath = ASSET_PATH + TEXTURE_PATH + "/sunmap.png";
     currentGameObject->loadDiffuseMap(texturePath);
     
@@ -143,14 +144,16 @@ void mercuryLoader()
 {
     string modelPath = ASSET_PATH + MODEL_PATH + "/Planet.fbx";
     auto currentGameObject = loadFBXFromFile(modelPath);
-    string vsPath = ASSET_PATH + SHADER_PATH + "/specularVS.glsl";
-    string fsPath = ASSET_PATH + SHADER_PATH + "/specularFS.glsl";
+    string vsPath = ASSET_PATH + SHADER_PATH + "/specularVSTest.glsl";
+    string fsPath = ASSET_PATH + SHADER_PATH + "/specularFSTest.glsl";
     currentGameObject->loadShader(vsPath, fsPath);
     currentGameObject->setScale(vec3(0.5f, 0.5f, 0.5f));
     currentGameObject->setPosition(vec3(-4.0f, 0.0f, 0.0f));
     currentGameObject->setRotationSpeed(vec3(0.0f, -1.0f, 0.0f));
     string texturePath = ASSET_PATH + TEXTURE_PATH + "/mercurymap.png";
+  //string tecture2Path = ASSET_PATH + TEXTURE_PATH + "/MercuryBumpMap.png";
     currentGameObject->loadDiffuseMap(texturePath);
+ // currentGameObject->LoadSpecularMap(tecture2Path);
   
     gameObjects.push_back(currentGameObject);
 
@@ -179,15 +182,17 @@ void earthLoader()
 {
     string modelPath = ASSET_PATH + MODEL_PATH + "/Planet.fbx";
     auto currentGameObject = loadFBXFromFile(modelPath);
-    string vsPath = ASSET_PATH + SHADER_PATH + "/specularVS.glsl";
-    string fsPath = ASSET_PATH + SHADER_PATH + "/specularFS.glsl";
+  string vsPath = ASSET_PATH + SHADER_PATH + "/specularVSTest.glsl";
+  string fsPath = ASSET_PATH + SHADER_PATH + "/specularFSTest.glsl";
     currentGameObject->loadShader(vsPath, fsPath);
     currentGameObject->setScale(vec3(0.5f, 0.5f, 0.5f));
     currentGameObject->setPosition(vec3(12.0f, 0.0f, 0.0f));
-    
-    string texturePath = ASSET_PATH + TEXTURE_PATH + "/tc-earth_daymap.jpg";
+     currentGameObject->setRotationSpeed(vec3(0.0f, -1.0f, 0.0f));
+    string texturePath = ASSET_PATH + TEXTURE_PATH + "/EarthColourMap.png";
+   string tecture2Path = ASSET_PATH + TEXTURE_PATH + "/EarthSpecMap.png";
     currentGameObject->loadDiffuseMap(texturePath);
-    
+     currentGameObject->LoadSpecularMap(tecture2Path);
+  
     gameObjects.push_back(currentGameObject);
 }
 
@@ -281,14 +286,21 @@ void renderGameObject(shared_ptr<GameObject> gameObject)
 		glUseProgram(currentShaderProgam);
 	}
   GLint texture0Location = glGetUniformLocation(currentShaderProgam, "texture0");
-  
+  GLint texture1Location = glGetUniformLocation(currentShaderProgam, "texture1");
   if (gameObject->getDiffuseMap() > 0){
     currentDiffuseMap = gameObject->getDiffuseMap();
   }
   glActiveTexture(GL_TEXTURE0);
   glBindTexture(GL_TEXTURE_2D, currentDiffuseMap);
   glUniform1i(texture0Location, 0);
- 
+  
+  if (gameObject->getSpecularMap() > 0){
+    currentSpecMap = gameObject->getSpecularMap();
+  }
+  glActiveTexture(GL_TEXTURE1);
+  glBindTexture(GL_TEXTURE_2D, currentSpecMap);
+  glUniform1i(texture1Location, 1);
+
 	GLint MVPLocation = glGetUniformLocation(currentShaderProgam, "MVP");
 
 	GLint ambientLightColourLocation = glGetUniformLocation(currentShaderProgam, "ambientLightColour");
