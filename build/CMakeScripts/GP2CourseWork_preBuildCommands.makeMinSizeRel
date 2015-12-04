@@ -6,4 +6,4 @@ all: \
 
 
 GP2CourseWork_buildpart_0: 
-	/Applications/CMake.app/Contents/bin/cmake -E copy_directory /Users/jamesglasgow/Documents/GP2CourseWork/assets /Users/jamesglasgow/Documents/GP2CourseWork/build/MinSizeRel/assets
+	/Applications/CMake.app/Contents/bin/cmake -E copy_directory /Users/MHReid/Documents/GP2-Labs/GP2CourseWork/assets /Users/MHReid/Documents/GP2-Labs/GP2CourseWork/build/MinSizeRel/assets

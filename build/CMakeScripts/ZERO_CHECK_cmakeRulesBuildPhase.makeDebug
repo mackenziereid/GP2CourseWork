@@ -2,9 +2,9 @@
 # Custom rules for ZERO_CHECK
 .SUFFIXES: 
 all: \
-	/Users/jamesglasgow/Documents/GP2CourseWork/build/CMakeFiles/ZERO_CHECK
+	/Users/MHReid/Documents/GP2-Labs/GP2CourseWork/build/CMakeFiles/ZERO_CHECK
 
 
-/Users/jamesglasgow/Documents/GP2CourseWork/build/CMakeFiles/ZERO_CHECK: 
+/Users/MHReid/Documents/GP2-Labs/GP2CourseWork/build/CMakeFiles/ZERO_CHECK: 
 	echo ""
-	make -f /Users/jamesglasgow/Documents/GP2CourseWork/build/CMakeScripts/ReRunCMake.make
+	make -f /Users/MHReid/Documents/GP2-Labs/GP2CourseWork/build/CMakeScripts/ReRunCMake.make

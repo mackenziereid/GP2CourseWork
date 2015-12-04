@@ -131,15 +131,12 @@ void sunLoader()
     string vsPath = ASSET_PATH + SHADER_PATH + "/textureVS.glsl";
     string fsPath = ASSET_PATH + SHADER_PATH + "/textureFS.glsl";
     currentGameObject->loadShader(vsPath, fsPath);
-<<<<<<< HEAD
+
     currentGameObject->setScale(vec3(2.0f, 2.0f, 2.0f));
     currentGameObject->setPosition(vec3(-18.0f, 0.0f, 0.0f));
 
-=======
-    currentGameObject->setScale(vec3(0.5f, 0.5f, 0.5f));
-    currentGameObject->setPosition(vec3(-12.0f, 0.0f, 0.0f));
     currentGameObject->setRotationSpeed(vec3(0.0f, -0.01f, 0.0f));
->>>>>>> glaschu1/master
+
     string texturePath = ASSET_PATH + TEXTURE_PATH + "/sunmap.png";
     currentGameObject->loadDiffuseMap(texturePath);
     
@@ -154,15 +151,12 @@ void mercuryLoader()
     string vsPath = ASSET_PATH + SHADER_PATH + "/specularVSTest.glsl";
     string fsPath = ASSET_PATH + SHADER_PATH + "/specularFSTest.glsl";
     currentGameObject->loadShader(vsPath, fsPath);
-<<<<<<< HEAD
+
     currentGameObject->setScale(vec3(0.3f, 0.3f, 0.3f));
     currentGameObject->setPosition(vec3(-28.0f, 0.0f, 0.0f));
-    
-=======
-    currentGameObject->setScale(vec3(0.5f, 0.5f, 0.5f));
-    currentGameObject->setPosition(vec3(-4.0f, 0.0f, 0.0f));
+
     currentGameObject->setRotationSpeed(vec3(0.0f, -1.0f, 0.0f));
->>>>>>> glaschu1/master
+
     string texturePath = ASSET_PATH + TEXTURE_PATH + "/mercurymap.png";
   //string tecture2Path = ASSET_PATH + TEXTURE_PATH + "/MercuryBumpMap.png";
     currentGameObject->loadDiffuseMap(texturePath);
@@ -199,13 +193,11 @@ void earthLoader()
   string fsPath = ASSET_PATH + SHADER_PATH + "/specularFSTest.glsl";
     currentGameObject->loadShader(vsPath, fsPath);
     currentGameObject->setScale(vec3(0.5f, 0.5f, 0.5f));
-<<<<<<< HEAD
+
     currentGameObject->setPosition(vec3(10.0f, 0.0f, 0.0f));
-    
-=======
-    currentGameObject->setPosition(vec3(12.0f, 0.0f, 0.0f));
+
      currentGameObject->setRotationSpeed(vec3(0.0f, -1.0f, 0.0f));
->>>>>>> glaschu1/master
+
     string texturePath = ASSET_PATH + TEXTURE_PATH + "/EarthColourMap.png";
    string tecture2Path = ASSET_PATH + TEXTURE_PATH + "/EarthSpecMap.png";
     currentGameObject->loadDiffuseMap(texturePath);
@@ -285,11 +277,9 @@ void update()
 
 	projMatrix = perspective(45.0f, 640.0f / 480.0f, 0.1f, 100.0f);
 
-<<<<<<< HEAD
+
 	viewMatrix = lookAt(cameraPosition, cameraLookat, vec3(0.0f, 1.0f, 0.0f));
-=======
-	viewMatrix = lookAt(cameraPosition, vec3(0.0f, 0.0f, 1.0f), vec3(0.0f, 1.0f, 0.0f));
->>>>>>> glaschu1/master
+
 
 	for (auto iter = gameObjects.begin(); iter != gameObjects.end(); iter++)
 	{
@@ -504,7 +494,7 @@ int main(int argc, char * arg[])
 				switch (event.key.keysym.sym)
 				{
 				case SDLK_LEFT:
-<<<<<<< HEAD
+
                         cameraPosition.x--;
                     break;
 				case SDLK_RIGHT:
@@ -529,50 +519,7 @@ int main(int argc, char * arg[])
                         getLookatPosition(4);
                     break;
                     default:
-=======
-            cameraPosition.x++;
-            
-					break;
-				case SDLK_RIGHT:
-            cameraPosition.x--;
-					break;
-				case SDLK_UP:
-            cameraPosition.y--;
-					break;
-				case SDLK_DOWN:
-            cameraPosition.y++;
-					break;
-          case SDLK_m:
-            cameraPosition.z--;
-            break;
-          case SDLK_n:
-            cameraPosition.z++;
-            break;
-          case SDLK_w:
-            lightDirection.x +=-1.0f;
-            
-            break;
-          case SDLK_s:
-           lightDirection.x +=1.0f;
-            
-            break;
-          case SDLK_d:
-            lightDirection.y +=1.0f;
-            break;
-          case SDLK_a:
-            lightDirection.y +=-1.0f;
-            break;
-          case SDLK_e:
-           lightDirection.z +=1.0f;
-            break;
-          case SDLK_q:
-            lightDirection.z +=-1.0f;
-            break;
-          case SDLK_t:
-            cout<<test<<endl;
-            break;
-				default:
->>>>>>> glaschu1/master
+
 					break;
 				}
 			}
