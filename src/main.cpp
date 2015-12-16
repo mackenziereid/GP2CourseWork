@@ -223,17 +223,18 @@ void marsLoader()
   string vsPath = ASSET_PATH + SHADER_PATH + "/specularVS.glsl";
   string fsPath = ASSET_PATH + SHADER_PATH + "/specularFS.glsl";
     currentGameObject->loadShader(vsPath, fsPath);
-    currentGameObject->setScale(vec3(0.53f, 0.53f, 0.53f));
+    currentGameObject->setScale(vec3(0.45f, 0.45f, 0.45f));
     currentGameObject->setPosition(vec3(42.0f, 0.0f, 0.0f));
     
     currentGameObject->setRotationSpeed(vec3(0.0f, -1.0f, 0.0f));
     currentGameObject->setOrbitSpeed(vec3(0.0f, 2.5f, 0.0f));
     
-    string texturePath = ASSET_PATH + TEXTURE_PATH + "/mercurymap.png";
+    string texturePath = ASSET_PATH + TEXTURE_PATH + "/MarsColourMap2.png";
     currentGameObject->loadDiffuseMap(texturePath);
     
     gameObjects.push_back(currentGameObject);
 }
+
 void jupiterLoader()
 {
     string modelPath = ASSET_PATH + MODEL_PATH + "/Planet.fbx";
@@ -241,13 +242,70 @@ void jupiterLoader()
     string vsPath = ASSET_PATH + SHADER_PATH + "/textureVS.glsl";
     string fsPath = ASSET_PATH + SHADER_PATH + "/textureFS.glsl";
     currentGameObject->loadShader(vsPath, fsPath);
-    currentGameObject->setScale(vec3(0.53f, 0.53f, 0.53f));
-    currentGameObject->setPosition(vec3(20.0f, 0.0f, 0.0f));
+    currentGameObject->setScale(vec3(1.2f, 1.2f, 1.2f));
+    currentGameObject->setPosition(vec3(60.0f, 0.0f, 0.0f));
     
     currentGameObject->setRotationSpeed(vec3(0.0f, -1.0f, 0.0f));
-    currentGameObject->setOrbitSpeed(vec3(0.0f, 10.0f, 0.0f));
+    currentGameObject->setOrbitSpeed(vec3(0.0f, 1.89f, 0.0f));
     
-    string texturePath = ASSET_PATH + TEXTURE_PATH + "/mercurymap.png";
+    string texturePath = ASSET_PATH + TEXTURE_PATH + "/JupiterColourMap.png";
+    currentGameObject->loadDiffuseMap(texturePath);
+    
+    gameObjects.push_back(currentGameObject);
+}
+
+void saturnLoader()
+{
+    string modelPath = ASSET_PATH + MODEL_PATH + "/Planet.fbx";
+    auto currentGameObject = loadFBXFromFile(modelPath);
+    string vsPath = ASSET_PATH + SHADER_PATH + "/textureVS.glsl";
+    string fsPath = ASSET_PATH + SHADER_PATH + "/textureFS.glsl";
+    currentGameObject->loadShader(vsPath, fsPath);
+    currentGameObject->setScale(vec3(1.0f, 1.0f, 1.2f));
+    currentGameObject->setPosition(vec3(75.0f, 0.0f, 0.0f));
+    
+    currentGameObject->setRotationSpeed(vec3(0.0f, -1.0f, 0.0f));
+    currentGameObject->setOrbitSpeed(vec3(0.0f, 1.25f, 0.0f));
+    
+    string texturePath = ASSET_PATH + TEXTURE_PATH + "/SaturnColourMap.png";
+    currentGameObject->loadDiffuseMap(texturePath);
+    
+    gameObjects.push_back(currentGameObject);
+}
+
+void uranusLoader()
+{
+    string modelPath = ASSET_PATH + MODEL_PATH + "/Planet.fbx";
+    auto currentGameObject = loadFBXFromFile(modelPath);
+    string vsPath = ASSET_PATH + SHADER_PATH + "/textureVS.glsl";
+    string fsPath = ASSET_PATH + SHADER_PATH + "/textureFS.glsl";
+    currentGameObject->loadShader(vsPath, fsPath);
+    currentGameObject->setScale(vec3(0.9f, 0.9f, 0.9f));
+    currentGameObject->setPosition(vec3(85.0f, 0.0f, 0.0f));
+    
+    currentGameObject->setRotationSpeed(vec3(0.0f, -1.0f, 0.0f));
+    currentGameObject->setOrbitSpeed(vec3(0.0f, 1.0f, 0.0f));
+    
+    string texturePath = ASSET_PATH + TEXTURE_PATH + "/UranusColourMap.png";
+    currentGameObject->loadDiffuseMap(texturePath);
+    
+    gameObjects.push_back(currentGameObject);
+}
+
+void neptuneLoader()
+{
+    string modelPath = ASSET_PATH + MODEL_PATH + "/Planet.fbx";
+    auto currentGameObject = loadFBXFromFile(modelPath);
+    string vsPath = ASSET_PATH + SHADER_PATH + "/textureVS.glsl";
+    string fsPath = ASSET_PATH + SHADER_PATH + "/textureFS.glsl";
+    currentGameObject->loadShader(vsPath, fsPath);
+    currentGameObject->setScale(vec3(0.9f, 0.9f, 0.9f));
+    currentGameObject->setPosition(vec3(95.0f, 0.0f, 0.0f));
+    
+    currentGameObject->setRotationSpeed(vec3(0.0f, -1.0f, 0.0f));
+    currentGameObject->setOrbitSpeed(vec3(0.0f, 0.78f, 0.0f));
+    
+    string texturePath = ASSET_PATH + TEXTURE_PATH + "/NeptuneColourMap.png";
     currentGameObject->loadDiffuseMap(texturePath);
     
     gameObjects.push_back(currentGameObject);
@@ -298,7 +356,10 @@ void initScene()
     venusLoader();
     earthLoader();
     marsLoader();
-  //jupiterLoader();
+    jupiterLoader();
+    saturnLoader();
+    uranusLoader();
+    neptuneLoader();
 }
 
 void update()
