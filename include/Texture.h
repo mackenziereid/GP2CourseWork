@@ -9,4 +9,9 @@ GLuint	loadTextureFromFont(const string& fontFilename, int	pointSize, const stri
 
 GLuint convertSDLSurfaceToTexture(SDL_Surface * surface);
 
+GLuint loadCubeTexture(const string& filenamePosZ, const string& filenameNegZ, const string& filenamePosX,
+                       const string& filenameNegX, const string& filenamePosY, const string& filenameNegY);
+
+void loadCubeMapFace(const string& filename, GLenum face);
+
 #endif

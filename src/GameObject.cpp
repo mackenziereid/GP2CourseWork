@@ -60,9 +60,15 @@ void GameObject::update()
 	mat4 rotationMatrix = rotate(mat4(1.0f), (m_Rotation.x+totalTime)*m_RotationSpeed.x, vec3(1.0f, 0.0f, 0.0f))*
 		rotate(mat4(1.0f), (m_Rotation.y+totalTime)*m_RotationSpeed.y, vec3(0.0f, 1.0f, 0.0f))*
 		rotate(mat4(1.0f), (m_Rotation.z+totalTime)*m_RotationSpeed.z, vec3(0.0f, 0.0f, 1.0f));
+    
+    mat4 orbitMatrix = rotate(mat4(1.0f), (m_Orbit.x+totalTime)*m_orbitSpeed.x, vec3(1.0f, 0.0f, 0.0f))*
+        rotate(mat4(1.0f), (m_Orbit.y+totalTime)*m_orbitSpeed.y, vec3(0.0f, 1.0f, 0.0f))*
+    rotate(mat4(1.0f), (m_Orbit.z+totalTime)*m_orbitSpeed.z, vec3(0.0f, 0.0f, 1.0f));
  
   //rotate around center of objet //add *-translationMatrix at end to rotate around 0,0,0
-	m_ModelMatrix = scaleMatrix*translationMatrix*rotationMatrix;
+	m_ModelMatrix = translationMatrix*rotationMatrix*scaleMatrix;
+    m_ModelMatrix = orbitMatrix*translationMatrix*scaleMatrix;
+
 	m_ModelMatrix *= parentModel;
 
 	for (auto iter = m_ChildGameObjects.begin(); iter != m_ChildGameObjects.end(); iter++)

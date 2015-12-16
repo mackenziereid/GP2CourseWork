@@ -346,4 +346,5 @@ dependencies: \
   /opt/local/include/glm/gtc/type_ptr.inl \
   /Users/MHReid/Documents/GP2-Labs/GP2CourseWork/include/Vertices.h \
   /Users/MHReid/Documents/GP2-Labs/GP2CourseWork/include/GameObject.h \
-  /Users/MHReid/Documents/GP2-Labs/GP2CourseWork/include/Material.h
+  /Users/MHReid/Documents/GP2-Labs/GP2CourseWork/include/Material.h \
+  /Users/MHReid/Documents/GP2-Labs/GP2CourseWork/include/SkyboxMesh.h

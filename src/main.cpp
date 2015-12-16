@@ -3,10 +3,13 @@
 #include "Vertices.h"
 #include "Shader.h"
 #include "Texture.h"
+#include "SkyboxMesh.h"
 #include "Mesh.h"
 #include "FBXLoader.h"
 #include "FileSystem.h"
 #include "GameObject.h"
+#include "SkyboxCube.h"
+
 
 //matrices
 mat4 viewMatrix;
@@ -15,6 +18,7 @@ mat4 projMatrix;
 mat4 MVPMatrix;
 
 vector<shared_ptr<GameObject> > gameObjects;
+shared_ptr<GameObject> skyBox;
 
 GLuint currentShaderProgam = 0;
 
@@ -27,8 +31,8 @@ vec4 specularLightColour=vec4(1.0f,1.0f,1.0f,1.0f);
 float specularPower=25.0f;
 
 vec3 lightDirection=vec3(0.0f,0.0f,1.0f);
-vec3 cameraPosition=vec3(18.0f,0.0f,30.0f);
-vec3 cameraLookat = vec3(-12.0f, 0.0f, 0.0f);
+vec3 cameraPosition=vec3(0.0f,75.0f,75.0f);
+vec3 cameraLookat = vec3(0.0f, 0.0f, 0.0f);
 
 float test=0.0f;
 //for Framebuffer
@@ -133,7 +137,7 @@ void sunLoader()
     currentGameObject->loadShader(vsPath, fsPath);
 
     currentGameObject->setScale(vec3(2.0f, 2.0f, 2.0f));
-    currentGameObject->setPosition(vec3(-18.0f, 0.0f, 0.0f));
+    currentGameObject->setPosition(vec3(0.0f, 0.0f, 0.0f));
 
     currentGameObject->setRotationSpeed(vec3(0.0f, -0.01f, 0.0f));
 
@@ -153,9 +157,10 @@ void mercuryLoader()
     currentGameObject->loadShader(vsPath, fsPath);
 
     currentGameObject->setScale(vec3(0.3f, 0.3f, 0.3f));
-    currentGameObject->setPosition(vec3(-28.0f, 0.0f, 0.0f));
+    currentGameObject->setPosition(vec3(15.0f, 0.0f, 0.0f));
 
     currentGameObject->setRotationSpeed(vec3(0.0f, -1.0f, 0.0f));
+    currentGameObject->setOrbitSpeed(vec3(0.0f, 1.5f, 0.0f));
 
     string texturePath = ASSET_PATH + TEXTURE_PATH + "/mercurymap.png";
   //string tecture2Path = ASSET_PATH + TEXTURE_PATH + "/MercuryBumpMap.png";
@@ -175,7 +180,10 @@ void mercuryLoader()
     string fsPath = ASSET_PATH + SHADER_PATH + "/specularFS.glsl";
     currentGameObject->loadShader(vsPath, fsPath);
     currentGameObject->setScale(vec3(0.4f, 0.4f, 0.4f));
-    currentGameObject->setPosition(vec3(-5.0f, 0.0f, 0.0f));
+    currentGameObject->setPosition(vec3(25.0f, 0.0f, 0.0f));
+    
+    currentGameObject->setRotationSpeed(vec3(0.0f, -1.0f, 0.0f));
+    currentGameObject->setOrbitSpeed(vec3(0.0f, 1.75f, 0.0f));
     
     string texturePath = ASSET_PATH + TEXTURE_PATH + "/venusmap.png";
     currentGameObject->loadDiffuseMap(texturePath);
@@ -194,9 +202,10 @@ void earthLoader()
     currentGameObject->loadShader(vsPath, fsPath);
     currentGameObject->setScale(vec3(0.5f, 0.5f, 0.5f));
 
-    currentGameObject->setPosition(vec3(10.0f, 0.0f, 0.0f));
+    currentGameObject->setPosition(vec3(35.0f, 0.0f, 0.0f));
 
-     currentGameObject->setRotationSpeed(vec3(0.0f, -1.0f, 0.0f));
+    currentGameObject->setRotationSpeed(vec3(0.0f, -1.0f, 0.0f));
+    currentGameObject->setOrbitSpeed(vec3(0.0f, 3.0f, 0.0f));
 
     string texturePath = ASSET_PATH + TEXTURE_PATH + "/EarthColourMap.png";
    string tecture2Path = ASSET_PATH + TEXTURE_PATH + "/EarthSpecMap.png";
@@ -215,7 +224,10 @@ void marsLoader()
   string fsPath = ASSET_PATH + SHADER_PATH + "/specularFS.glsl";
     currentGameObject->loadShader(vsPath, fsPath);
     currentGameObject->setScale(vec3(0.53f, 0.53f, 0.53f));
-    currentGameObject->setPosition(vec3(9.0f, 0.0f, 0.0f));
+    currentGameObject->setPosition(vec3(42.0f, 0.0f, 0.0f));
+    
+    currentGameObject->setRotationSpeed(vec3(0.0f, -1.0f, 0.0f));
+    currentGameObject->setOrbitSpeed(vec3(0.0f, 2.5f, 0.0f));
     
     string texturePath = ASSET_PATH + TEXTURE_PATH + "/mercurymap.png";
     currentGameObject->loadDiffuseMap(texturePath);
@@ -231,6 +243,9 @@ void jupiterLoader()
     currentGameObject->loadShader(vsPath, fsPath);
     currentGameObject->setScale(vec3(0.53f, 0.53f, 0.53f));
     currentGameObject->setPosition(vec3(20.0f, 0.0f, 0.0f));
+    
+    currentGameObject->setRotationSpeed(vec3(0.0f, -1.0f, 0.0f));
+    currentGameObject->setOrbitSpeed(vec3(0.0f, 10.0f, 0.0f));
     
     string texturePath = ASSET_PATH + TEXTURE_PATH + "/mercurymap.png";
     currentGameObject->loadDiffuseMap(texturePath);
@@ -260,11 +275,29 @@ void initScene()
     totalTime=0.0f;
     //createFramebuffer();
     
+    shared_ptr<SkyboxMesh> skyMesh = shared_ptr<SkyboxMesh>(new SkyboxMesh);
+    skyMesh->create(cubeVerts, numberOfCubeVerts, cubeIndices, numberOfCubeIndices);
+    
+    shared_ptr<Material> skyMaterial=shared_ptr<Material>(new Material);
+    string spaceIMG=ASSET_PATH+TEXTURE_PATH+"/space.png";
+    skyMaterial->loadSkyBoxTextures(spaceIMG,spaceIMG,spaceIMG,spaceIMG,spaceIMG,spaceIMG);
+
+    
+    string vsPath=ASSET_PATH+SHADER_PATH+"/SkyVS.glsl";
+    string fsPath=ASSET_PATH+SHADER_PATH+"/SkyFS.glsl";
+    skyMaterial->loadShader(vsPath,fsPath);
+    skyBox=shared_ptr<GameObject>(new GameObject);
+    skyBox->setMesh(skyMesh);
+    skyBox->setMaterial(skyMaterial);
+    
+    skyBox->update();
+    
+    
     sunLoader();
     mercuryLoader();
     venusLoader();
     earthLoader();
-   //marsLoader();
+    marsLoader();
   //jupiterLoader();
 }
 
@@ -275,7 +308,7 @@ void update()
 	elapsedTime = (currentTicks - lastTicks) / 1000.0f;
 	totalTime+=elapsedTime;
 
-	projMatrix = perspective(45.0f, 640.0f / 480.0f, 0.1f, 100.0f);
+	projMatrix = perspective(45.0f, 640.0f / 480.0f, 0.1f, 200.0f);
 
 
 	viewMatrix = lookAt(cameraPosition, cameraLookat, vec3(0.0f, 1.0f, 0.0f));

@@ -22,7 +22,11 @@ public:
   {
     glUseProgram(m_ShaderProgram);
   };
-  
+    
+  void loadSkyBoxTextures(const string& filenamePosZ, const string& filenameNegZ, const string& filenamePosX,
+                            const string& filenameNegX, const string& filenamePosY, const string& filenameNegY);
+    
+    
   void loadShader(const string& vsFilename, const string& fsFilename);
   
   void loadDiffuseMap(const string& filename);

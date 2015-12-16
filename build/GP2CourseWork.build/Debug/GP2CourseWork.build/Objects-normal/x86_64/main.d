@@ -346,8 +346,10 @@ dependencies: /Users/MHReid/Documents/GP2-Labs/GP2CourseWork/src/main.cpp \
   /Users/MHReid/Documents/GP2-Labs/GP2CourseWork/include/Vertices.h \
   /Users/MHReid/Documents/GP2-Labs/GP2CourseWork/include/Shader.h \
   /Users/MHReid/Documents/GP2-Labs/GP2CourseWork/include/Texture.h \
+  /Users/MHReid/Documents/GP2-Labs/GP2CourseWork/include/SkyboxMesh.h \
   /Users/MHReid/Documents/GP2-Labs/GP2CourseWork/include/Mesh.h \
   /Users/MHReid/Documents/GP2-Labs/GP2CourseWork/include/FBXLoader.h \
   /Users/MHReid/Documents/GP2-Labs/GP2CourseWork/include/GameObject.h \
   /Users/MHReid/Documents/GP2-Labs/GP2CourseWork/include/Material.h \
-  /Users/MHReid/Documents/GP2-Labs/GP2CourseWork/include/FileSystem.h
+  /Users/MHReid/Documents/GP2-Labs/GP2CourseWork/include/FileSystem.h \
+  /Users/MHReid/Documents/GP2-Labs/GP2CourseWork/include/SkyboxCube.h
